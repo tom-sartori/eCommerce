@@ -33,6 +33,17 @@ class Model {
 			die(); 
 		}
 	}
+
+    public static function selectAll() {
+        $table_name=static::$nomTable;
+        $nomObject=static::$object;
+        $class_name="Model".ucfirst($nomObject);
+        $rep = Model::$pdo->query('Select * from '.$table_name);
+        $rep->setFetchMode(PDO::FETCH_CLASS, $class_name);;
+        return $rep->fetchAll();
+    }
+
+
 }
 Model::Init(); 
 ?>
