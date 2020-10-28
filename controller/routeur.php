@@ -13,9 +13,8 @@ if (isset($_GET['controller'])) {
             } else {
                 $controller_Class::error();
             }
-        } else
-            ControllerBouleDeNoel::readAll();
+        }
     }
-} else
-    ControllerBouleDeNoel::errorController();
+}else
+    ControllerBouleDeNoel::readAll();
 ?>
