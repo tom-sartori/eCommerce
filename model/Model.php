@@ -43,6 +43,29 @@ class Model {
         return $rep->fetchAll();
     }
 
+    public static function select($primary_value){
+        $table_name=static::$nomTable;
+        $nomObject=static::$object;
+        $class_name="Model".ucfirst($nomObject);
+        $primary_key=static::$primary;
+        $sql = "SELECT * from ".$table_name." WHERE ". $primary_key."=:nom_tag";
+        // Préparation de la requête
+        $req_prep = Model::$pdo->prepare($sql);
+
+        $values = array(
+            "nom_tag" => $primary_value,
+        );
+        $req_prep->execute($values);
+
+        // On récupère les résultats comme précédemment
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        $tab_gen = $req_prep->fetchAll();
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_gen))
+            return false;
+        return $tab_gen[0];
+    }
+
 
     public static function delete($primary_value) {
         $table_name = static::$nomTable;

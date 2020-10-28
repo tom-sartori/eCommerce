@@ -8,7 +8,7 @@ class ModelBouleDeNoel extends Model{
     private $couleur;
     private $taille;
     private $matiere;
-    private $fournisseur;
+    private $idFournisseur;
     private $stock;
     protected static $nomTable = 'p_BouleDeNoel';
     protected static $object='BouleDeNoel';
@@ -22,17 +22,17 @@ class ModelBouleDeNoel extends Model{
      * @param $taille
      * @param $matiere
      * @param $fournisseur
-     * @param $stock
+     * @param $stocks
      */
-    public function __construct($idBouleDeNoel=NULL, $nom=NULL, $couleur=NULL, $taille=NULL, $matiere=NULL, $fournisseur=NULL, $stock=NULL)
+    public function __construct($idBouleDeNoel=NULL, $nom=NULL, $couleur=NULL, $taille=NULL, $matiere=NULL, $idFournisseur=NULL, $stock=NULL)
     {
-        if (!is_null($idBouleDeNoel) && !is_null($nom) && !is_null($couleur) && !is_null($taille) && !is_null($matiere) && !is_null($stock) && !is_null($fournisseur)) {
+        if (!is_null($idBouleDeNoel) && !is_null($nom) && !is_null($couleur) && !is_null($taille) && !is_null($matiere) && !is_null($stock) && !is_null($if=idFournisseur)) {
             $this->idBouleDeNoel = $idBouleDeNoel;
             $this->nom = $nom;
             $this->couleur = $couleur;
             $this->taille = $taille;
             $this->matiere = $matiere;
-            $this->fournisseur = $fournisseur;
+            $this->idFournisseur = $idFournisseur;
             $this->stock=$stock;
         }
     }
@@ -94,9 +94,19 @@ class ModelBouleDeNoel extends Model{
     /**
      * @return mixed
      */
-    public function getFournisseur()
+    public function getIdFournisseur()
     {
-        return $this->fournisseur;
+        return $this->idFournisseur;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+
 
 }

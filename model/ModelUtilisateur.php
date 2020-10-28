@@ -8,6 +8,7 @@ class ModelUtilisateur extends Model{
     private $prenom;
     private $adresse;
     private $adresseMail;
+    private $pays;
     protected static $nomTable = 'p_Utilisateur';
     protected static $object='Utilisateur';
     protected static $primary='login';
@@ -20,14 +21,15 @@ class ModelUtilisateur extends Model{
      * @param $adresse
      * @param $adresseMail
      */
-    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL)
+    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
     {
-        if (!is_null($login) && !is_null($nom) && !is_null($prenom) && !is_null($adresse) && !is_null($adresseMail)) {
+        if (!is_null($login) && !is_null($nom) && !is_null($prenom) && !is_null($adresse) && !is_null($adresseMail) && !is_null($pays)) {
             $this->login = $login;
             $this->nom = $nom;
             $this->prenom = $prenom;
             $this->adresse = $adresse;
             $this->adresseMail = $adresseMail;
+            $this->pays = $pays;
         }
     }
 
@@ -85,6 +87,15 @@ class ModelUtilisateur extends Model{
     {
         return $this->adresseMail;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
 
 
 
