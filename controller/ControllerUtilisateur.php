@@ -10,4 +10,21 @@ class ControllerUtilisateur{
         $tab_u = ModelUtilisateur::selectAll();     //appel au modèle pour gerer la BD
         require (File::build_path(array("view","view.php")));
     }
+
+    public static function read(){
+        $login = $_GET['login'];
+        $u=ModelUtilisateur::select($login);
+        if($u==null){
+            $controller='Utilisateur';
+            $view='error';
+            $pagetitle='Erreur utilisateur';
+            require (File::build_path(array("view","view.php")));
+        }else {
+            $controller = 'Utilisateur';
+            $view = 'detail';
+            $pagetitle = 'Details utilisateur';
+            require(File::build_path(array("view", "view.php")));
+        }
+    }
+
 }
