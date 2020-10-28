@@ -5,7 +5,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="erreurs reparées" />
+    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="erreurs reparées">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/routeur.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/routeur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ModelFournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelFournisseur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ModelUtilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelUtilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/Fournisseur/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Fournisseur/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/Utilisateur/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Utilisateur/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +80,8 @@
       <option name="presentableId" value="Default" />
       <updated>1603797745141</updated>
       <workItem from="1603797746248" duration="8911000" />
+      <workItem from="1603847691034" duration="419000" />
+      <workItem from="1603899328888" duration="645000" />
     </task>
     <task id="LOCAL-00001" summary="readAll fait pour toute les tables">
       <created>1603807595538</created>
@@ -107,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603812378139</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="erreurs reparées">
+      <created>1603847933061</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603847933061</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +171,7 @@
         <entry key="1" value="TOOL_WINDOW" />
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="readAll fait pour toute les tables" />
@@ -178,14 +197,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="842" y="359" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603809376989" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603812380316">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603847935797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603812380316" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603809710178">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603847935797" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603899697070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1603809710178" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1603899697070" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603807844564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -7,7 +7,8 @@ class ModelFournisseur extends Model {
     private $adresse;
     private $adresseMail;
     private $pays;
-    protected static $object='p_Fournisseur';
+    protected static $nomTable = 'p_Fournisseur';
+    protected static $object='Fournisseur';
     protected static $primary='idFournisseur';
 
     /**

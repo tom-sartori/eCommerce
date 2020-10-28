@@ -1,8 +1,8 @@
 <?php
 
 foreach ($tab_u as $u) {
-    $u_raw = rawurlencode($u->getIdBouleDeNoel());
-    $u_spe = htmlspecialchars($u->getIdBouleDeNoel());
+    $u_raw = rawurlencode($u->getLogin());
+    $u_spe = htmlspecialchars($u->getLogin());
     echo '<p> ' . 'Utilisateur de login : ' .
         '<a href="./index.php?controller=Utilisateur&action=read&login=' . $u_raw . '">' . $u_spe . '</a>' . " " .
         '<a href="./index.php?controller=Utilisateur&action=delete&login=' . $u_raw . '">' . '<button>' . 'Supprimer cet Utilisateur' . '</button>' .

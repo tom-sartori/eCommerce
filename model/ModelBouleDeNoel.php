@@ -10,7 +10,8 @@ class ModelBouleDeNoel extends Model{
     private $matiere;
     private $fournisseur;
     private $stock;
-    protected static $object='p_BouleDeNoel';
+    protected static $nomTable = 'p_BouleDeNoel';
+    protected static $object='BouleDeNoel';
     protected static $primary = 'idBouleDeNoel';
 
     /**
