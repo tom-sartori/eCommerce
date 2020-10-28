@@ -67,6 +67,27 @@ class Model {
     }
 
 
+    public static function delete($primary_value) {
+        $table_name = static::$nomTable;
+        $class_name = "Model" . ucfirst($table_name);
+        $primary_key = static::$primary;
+
+        $sql = "DELETE FROM " . $table_name . " WHERE " . $primary_key . " =:valeur";
+
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $value = array(
+                "valeur"=> $primary_value
+            );
+            $req_prep->execute($value);
+            return $primary_value;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
 }
 Model::Init(); 
 ?>

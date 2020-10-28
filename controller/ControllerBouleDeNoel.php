@@ -1,8 +1,12 @@
 <?php
-
 require_once (File::build_path(array("model","ModelBouleDeNoel.php"))); // chargement du modèle
+
+
 class ControllerBouleDeNoel{
+  
     protected static $object ="BouleDeNoel";
+  
+  
     public static function readAll() {
         $controller='BouleDeNoel';
         $view='list';
@@ -10,8 +14,9 @@ class ControllerBouleDeNoel{
         $tab_b = ModelBouleDeNoel::selectAll();     //appel au modèle pour gerer la BD
         require (File::build_path(array("view","view.php")));
     }
-
-    public static function read(){
+  
+  
+      public static function read(){
         $idBouleDeNoel = $_GET['idBouleDeNoel'];
         $b=ModelBouleDeNoel::select($idBouleDeNoel);
         if($b==null){
@@ -25,5 +30,18 @@ class ControllerBouleDeNoel{
             $pagetitle = 'Details boule de noel';
             require(File::build_path(array("view", "view.php")));
         }
+      }
+        
+        
+    public static function delete() {
+        $id = ModelBouleDeNoel::delete($_GET['idBouleDeNoel']);
+
+        $tab_b = ModelBouleDeNoel::selectAll();
+
+        $controller = 'BouleDeNoel';
+        $view = 'deleted';
+        $pagetitle = 'Utilisateur supprimé';
+
+        require_once(File::build_path(array("view", "view.php")));
     }
 }
