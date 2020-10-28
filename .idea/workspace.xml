@@ -5,11 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="Creation des fichier et de la fonction readall">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ModelFournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelFournisseur.php" afterDir="false" />
-    </list>
+    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="erreurs reparées" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603809558832</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="erreurs reparées">
+      <created>1603812378139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603812378139</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,7 +158,8 @@
     <MESSAGE value="readAll fait pour toute les tables" />
     <MESSAGE value="test" />
     <MESSAGE value="Creation des fichier et de la fonction readall" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creation des fichier et de la fonction readall" />
+    <MESSAGE value="erreurs reparées" />
+    <option name="LAST_COMMIT_MESSAGE" value="erreurs reparées" />
   </component>
   <component name="WindowStateProjectService">
     <state x="957" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603802487935">
@@ -174,10 +178,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="842" y="359" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603809376989" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603809561726">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603812380316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603809561726" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603812380316" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603809710178">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -190,9 +194,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="569" y="307" key="git4idea.ui.GitResetDialog/0.0.1536.824@0.0.1536.824" timestamp="1603808776623" />
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603807095518">
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1603812346457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603807095518" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603812346457" />
   </component>
 </project>

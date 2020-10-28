@@ -2,6 +2,7 @@
 
 require_once (File::build_path(array("model","ModelBouleDeNoel.php"))); // chargement du modèle
 class ControllerBouleDeNoel{
+    protected static $object ="BouleDeNoel";
     public static function readAll() {
         $controller='BouleDeNoel';
         $view='list';
