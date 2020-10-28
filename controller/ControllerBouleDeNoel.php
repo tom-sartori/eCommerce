@@ -10,4 +10,17 @@ class ControllerBouleDeNoel{
         $tab_b = ModelBouleDeNoel::selectAll();     //appel au modèle pour gerer la BD
         require (File::build_path(array("view","view.php")));
     }
+
+
+    public static function delete() {
+        $id = ModelBouleDeNoel::delete($_GET['idBouleDeNoel']);
+
+        $tab_b = ModelBouleDeNoel::selectAll();
+
+        $controller = 'BouleDeNoel';
+        $view = 'deleted';
+        $pagetitle = 'Utilisateur supprimé';
+
+        require_once(File::build_path(array("view", "view.php")));
+    }
 }
