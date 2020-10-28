@@ -2,29 +2,32 @@
 
 require_once(File::build_path(array("model","Model.php")));
 class ModelFournisseur extends Model {
-    private $id_Fournisseur;
+    private $idFournisseur;
     private $nom;
     private $adresse;
     private $adresseMail;
     private $pays;
-    protected static $object='p_Fournisseur';
-    protected static $primary='id_Fournisseur';
+    protected static $nomTable = 'p_Fournisseur';
+    protected static $object='Fournisseur';
+    protected static $primary='idFournisseur';
 
     /**
      * ModelFournisseur constructor.
-     * @param $id_Fournisseur
+     * @param $idFournisseur
      * @param $nom
      * @param $adresse
      * @param $adresseMail
      * @param $pays
      */
-    public function __construct($id_Fournisseur=NULL, $nom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
+    public function __construct($idFournisseur=NULL, $nom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
     {
-        $this->id_Fournisseur = $id_Fournisseur;
-        $this->nom = $nom;
-        $this->adresse = $adresse;
-        $this->adresseMail = $adresseMail;
-        $this->pays = $pays;
+        if (!is_null($idFournisseur) && !is_null($nom) && !is_null($adresse) && !is_null($pays) && !is_null($adresseMail)) {
+            $this->idFournisseur = $idFournisseur;
+            $this->nom = $nom;
+            $this->adresse = $adresse;
+            $this->adresseMail = $adresseMail;
+            $this->pays = $pays;
+        }
     }
 
     /**
@@ -32,7 +35,7 @@ class ModelFournisseur extends Model {
      */
     public function getIdFournisseur()
     {
-        return $this->id_Fournisseur;
+        return $this->idFournisseur;
     }
 
     /**

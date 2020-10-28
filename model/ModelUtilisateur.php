@@ -8,7 +8,8 @@ class ModelUtilisateur extends Model{
     private $prenom;
     private $adresse;
     private $adresseMail;
-    protected static $object='p_utilisateur';
+    protected static $nomTable = 'p_Utilisateur';
+    protected static $object='Utilisateur';
     protected static $primary='login';
 
     /**

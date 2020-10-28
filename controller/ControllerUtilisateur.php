@@ -2,6 +2,7 @@
 
 require_once (File::build_path(array("model","ModelUtilisateur.php"))); // chargement du modèle
 class ControllerUtilisateur{
+    protected static $object="Utilisateur";
     public static function readAll() {
         $controller='Utilisateur';
         $view='list';

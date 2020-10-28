@@ -20,7 +20,7 @@ require $filepath;
 </body>
 <footer>
     <p style="border: 1px solid black;text-align:right;padding-right:1em;">
-        Site de covoiturage de Jordan Pays
+        Site de ventes de boules de noël
     </p>
 </footer>
 </html>
