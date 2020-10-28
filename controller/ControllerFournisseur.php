@@ -10,4 +10,20 @@ class ControllerFournisseur{
         $tab_f = ModelFournisseur::selectAll();     //appel au modèle pour gerer la BD
         require (File::build_path(array("view","view.php")));
     }
+
+    public static function read(){
+        $idFournisseur = $_GET['idFournisseur'];
+        $f=ModelFournisseur::select($idFournisseur);
+        if($f==null){
+            $controller='Fournisseur';
+            $view='error';
+            $pagetitle='Erreur utilisateur';
+            require (File::build_path(array("view","view.php")));
+        }else {
+            $controller = 'Fournisseur';
+            $view = 'detail';
+            $pagetitle = 'Details Fournisseur';
+            require(File::build_path(array("view", "view.php")));
+        }
+    }
 }

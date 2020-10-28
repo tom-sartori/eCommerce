@@ -5,15 +5,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="erreurs reparées">
+    <list default="true" id="fd3251c7-1385-44de-9605-b503497e3f5e" name="Default Changelist" comment="affiche le readAll de boule de Noel par defaut">
+      <change afterPath="$PROJECT_DIR$/view/BouleDeNoel/detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/Fournisseur/detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/Utilisateur/detail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ControllerBouleDeNoel.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ControllerBouleDeNoel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ControllerFournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ControllerFournisseur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ControllerUtilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ControllerUtilisateur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/routeur.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/routeur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelBouleDeNoel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ModelFournisseur.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelFournisseur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ModelUtilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelUtilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/BouleDeNoel/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/BouleDeNoel/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/Fournisseur/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Fournisseur/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/Utilisateur/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Utilisateur/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +73,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TD-PHP" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,7 +86,7 @@
       <updated>1603797745141</updated>
       <workItem from="1603797746248" duration="8911000" />
       <workItem from="1603847691034" duration="419000" />
-      <workItem from="1603899328888" duration="645000" />
+      <workItem from="1603899328888" duration="8881000" />
     </task>
     <task id="LOCAL-00001" summary="readAll fait pour toute les tables">
       <created>1603807595538</created>
@@ -125,7 +130,21 @@
       <option name="project" value="LOCAL" />
       <updated>1603847933061</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="l'action read all fonctionne pour tous les tables">
+      <created>1603900008088</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603900008088</updated>
+    </task>
+    <task id="LOCAL-00008" summary="affiche le readAll de boule de Noel par defaut">
+      <created>1603901816473</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603901816473</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,29 +197,35 @@
     <MESSAGE value="test" />
     <MESSAGE value="Creation des fichier et de la fonction readall" />
     <MESSAGE value="erreurs reparées" />
-    <option name="LAST_COMMIT_MESSAGE" value="erreurs reparées" />
+    <MESSAGE value="l'action read all fonctionne pour tous les tables" />
+    <MESSAGE value="affiche le readAll de boule de Noel par defaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="affiche le readAll de boule de Noel par defaut" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="957" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603802487935">
+    <state x="957" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1603907433606">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="957" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603802487935" />
+    <state x="957" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603907433606" />
     <state x="147" y="65" key="DiffContextDialog" timestamp="1603807804591">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1603807804591" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1603901885121">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603901885121" />
     <state x="929" y="135" key="NewPhpClassDialog" timestamp="1603809259908">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="929" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1603809259908" />
-    <state x="842" y="359" key="NewPhpFileDialog" timestamp="1603809376989">
+    <state x="842" y="359" key="NewPhpFileDialog" timestamp="1603902200018">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="842" y="359" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603809376989" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603847935797">
+    <state x="842" y="359" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603902200018" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603901819871">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603847935797" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603901819871" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603899697070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
