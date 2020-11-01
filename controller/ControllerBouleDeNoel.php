@@ -8,7 +8,6 @@ class ControllerBouleDeNoel{
   
   
     public static function readAll() {
-        $controller='BouleDeNoel';
         $view='list';
         $pagetitle='Liste des BouleDeNoel';
         $tab_b = ModelBouleDeNoel::selectAll();     //appel au modèle pour gerer la BD
@@ -20,12 +19,10 @@ class ControllerBouleDeNoel{
         $idBouleDeNoel = $_GET['idBouleDeNoel'];
         $b=ModelBouleDeNoel::select($idBouleDeNoel);
         if($b==null){
-            $controller='BouleDeNoel';
             $view='error';
             $pagetitle='Erreur utilisateur';
             require (File::build_path(array("view","view.php")));
         }else {
-            $controller = 'BouleDeNoel';
             $view = 'detail';
             $pagetitle = 'Details boule de noel';
             require(File::build_path(array("view", "view.php")));
@@ -38,10 +35,67 @@ class ControllerBouleDeNoel{
 
         $tab_b = ModelBouleDeNoel::selectAll();
 
-        $controller = 'BouleDeNoel';
         $view = 'deleted';
-        $pagetitle = 'Utilisateur supprimé';
+        $pagetitle = 'Boule de Noël supprimée';
 
         require_once(File::build_path(array("view", "view.php")));
+    }
+
+    public static function error(){
+    
+        $view='error';
+        $pagetitle='Page d\'erreur ';
+        require(File::build_path(Array("view","view.php")));
+    }
+
+    public static function create(){
+        $view='update';
+        $idBouleDeNoel="";
+        $nom="";
+        $couleur="";
+        $taille="";
+        $matiere="";
+        $idFournisseur="";
+        $prix="";
+        $stock="";
+        $pagetitle='Formulaire de création d\'une boule de Noël';
+        require (File::build_path(Array("view","view.php")));
+    }
+
+    public static function update(){
+        $idBouleDeNoel= htmlspecialchars("" . $_GET["idBouleDeNoel"]);
+        $b = ModelBouleDeNoel::select($idBouleDeNoel);
+        $nom=htmlspecialchars("{$b->get('nom')}") ;
+        $couleur= htmlspecialchars("{$b->get('couleur')}");
+        $taille= htmlspecialchars("{$b->get('taille')}");
+        $matiere= htmlspecialchars("{$b->get('matiere')}");
+        $idFournisseur= htmlspecialchars("{$b->get('idFournisseur')}");
+        $prix= htmlspecialchars("{$b->get('prix')}");
+        $stock= htmlspecialchars("{$b->get('stock')}");
+        $tab_b = ModelBouleDeNoel::selectAll();
+        $view='update';
+        $pagetitle='Formulaire de mise à jour d\'une boule de Noël';
+        require(File::build_path(Array("view","view.php")));
+
+    }
+
+        public static function created(){
+        $data= array('nom' => $_POST["nom"] , 'couleur' => $_POST["couleur"] , 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"] , 'idFournisseur' => $_POST["idFournisseur"] , 'prix' => $_POST["prix"] , 'stock' => $_POST["stock"] , 'idBouleDeNoel' => $_POST["idBouleDeNoel"]);
+        ModelUtilisateur::save($data);
+        $tab_b = ModelUtilisateur::selectAll();
+        $view='created';
+        $pagetitle='Validation création de l\'utilisateur';
+        require(File::build_path(Array("view","view.php")));
+    }
+
+    public static function updated(){
+        $data = array('nom' => $_POST["nom"] , 'couleur' => $_POST["couleur"] , 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"] , 'idFournisseur' => $_POST["idFournisseur"] , 'prix' => $_POST["prix"] , 'stock' => $_POST["stock"]);
+        $i=$_POST['idBouleDeNoel'] ;
+        ModelUtilisateur::update($data,$i);
+        $tab_b = ModelUtilisateur::selectAll();
+        $view='updated';
+        $pagetitle='Validation mise à jour utilisateur';
+        require(File::build_path(Array("view","view.php")));
+
     }
 }
