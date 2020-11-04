@@ -25,16 +25,16 @@ if (isset($_GET['controller'])) {
 }
 else {
     if(isset($_GET['action'])){
-            if(in_array($_GET["action"],get_class_methods('ControllerBouleDeNoel'))){
-                $action=$_GET["action"];
-                ControllerBouleDeNoel::$action(); 
-            }
-            else{
-                ControllerBouleDeNoel::error();
-            }
+        if(in_array($_GET["action"],get_class_methods('ControllerBouleDeNoel'))){
+            $action=$_GET["action"];
+            ControllerBouleDeNoel::$action(); 
         }
+        else{
+            ControllerBouleDeNoel::error();
+        }
+    }
     else {
-    ControllerBouleDeNoel::readAll();
+        ControllerBouleDeNoel::readAll();
     }
 }
 ?>
