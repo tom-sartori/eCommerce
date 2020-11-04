@@ -28,6 +28,7 @@ else {
             if(in_array($_GET["action"],get_class_methods('ControllerBouleDeNoel'))){
                 $action=$_GET["action"];
                 ControllerBouleDeNoel::$action(); 
+            }
             else{
                 ControllerBouleDeNoel::error();
             }
