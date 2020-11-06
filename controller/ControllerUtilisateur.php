@@ -63,7 +63,7 @@ class ControllerUtilisateur{
 
     public static function update(){
         $login= htmlspecialchars("" . $_GET["login"]);
-        $u = ModelUtilisateur::select($idUtilisateur);
+        $u = ModelUtilisateur::select($login);
         $nom=htmlspecialchars("{$u->get('nom')}") ;
         $prenom=htmlspecialchars("{$u->get('prenom')}") ;
         $adresse= htmlspecialchars("{$u->get('adresse')}");

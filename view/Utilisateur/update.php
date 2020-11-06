@@ -5,7 +5,7 @@
   else { echo 'updated'; } ?>"  >
     <fieldset>
       <legend >Formulaire de création / mise à jour d'un utilisateur : </legend>
-      <p><style> label{ padding-right: 2.5%; padding-left: 2.5%; } </style>
+      <p>
         <label for="nom_id">Nom</label>
         <label for="prenom_id">Prenom</label>
         <label for="adresse_id">Adresse</label> 
