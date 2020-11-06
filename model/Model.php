@@ -87,6 +87,49 @@ class Model {
         }
     }
 
+    public static function update($data, $primary_value){
+       $table_name= static::$nomTable;
+       $primary_key= static::$primary;
+       try{
+          $sql = "UPDATE $table_name SET";
+          foreach ($data as $key => $value) {
+           $sql=$sql . " $key='$value' ,";
+       } 
+       $sql= rtrim($sql ,',');
+       $sql= $sql . "WHERE $primary_key =:valeur";
+       $req_prep = Model::$pdo->prepare($sql); 
+       $value = array(
+        "valeur"=> $primary_value
+    );
+       $req_prep->execute($value);
+   }
+   catch( PDOException $e){
+      echo " La mise à jour dans la base a rencontré cette erreur : <br>";
+      echo "{$e->getMessage()} <br><br>";
+  }
+}
+
+public static function save($data){
+    $table_name= static::$nomTable;
+    $sql = "INSERT INTO $table_name (";
+    foreach ($data as $key => $value) {
+        $sql = $sql . "$key ,";
+    }
+    $sql= rtrim($sql ,',') . ") VALUES(";
+    foreach ($data as $key => $value) {
+        $sql= $sql . "'$value',";
+    } 
+    $sql= rtrim($sql ,',') . ")";
+    try{
+        $prep=Model::$pdo->prepare($sql);
+        $prep->execute();
+    }
+    catch(PDOException $e){
+        echo "L'insertion dans la base de données a rencontré cette erreur : <br> ";
+    echo "{$e->getMessage()} <br><br>";
+    }
+}
+
 
 }
 Model::Init(); 
