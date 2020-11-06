@@ -65,8 +65,8 @@ class ControllerFournisseur{
         $f = ModelFournisseur::select($idFournisseur);
         $nom=htmlspecialchars("{$f->get('nom')}") ;
         $adresse= htmlspecialchars("{$f->get('adresse')}");
-        $adresseMail= htmlspecialchars("{$b->get('adresseMail')}");
-        $pays= htmlspecialchars("{$b->get('pays')}");
+        $adresseMail= htmlspecialchars("{$f->get('adresseMail')}");
+        $pays= htmlspecialchars("{$f->get('pays')}");
   
         $tab_f = ModelFournisseur::selectAll();
         $view='update';
