@@ -20,7 +20,7 @@ class ControllerBouleDeNoel{
         $b=ModelBouleDeNoel::select($idBouleDeNoel);
         if($b==null){
             $view='error';
-            $pagetitle='Erreur utilisateur';
+            $pagetitle='Erreur BouleDeNoel';
             require (File::build_path(array("view","view.php")));
         }else {
             $view = 'detail';
@@ -80,22 +80,34 @@ class ControllerBouleDeNoel{
     }
 
         public static function created(){
+
         $data= array('nom' => $_POST["nom"] , 'couleur' => $_POST["couleur"] , 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"] , 'idFournisseur' => $_POST["idFournisseur"] , 'prix' => $_POST["prix"] , 'stock' => $_POST["stock"] , 'idBouleDeNoel' => $_POST["idBouleDeNoel"]);
-        ModelUtilisateur::save($data);
-        $tab_b = ModelUtilisateur::selectAll();
-        $view='created';
-        $pagetitle='Validation création de l\'utilisateur';
-        require(File::build_path(Array("view","view.php")));
+        $erreur=ModelBouleDeNoel::save($data);
+        if($erreur==0) {
+            $view='error';
+            $pagetitle='Erreur création boule de Noël';
+        }
+        else{
+            $tab_b = ModelBouleDeNoel::selectAll();
+            $view='created';
+            $pagetitle='Validation création de la boule de Noël';
+            require(File::build_path(Array("view","view.php")));
+        }
     }
 
     public static function updated(){
         $data = array('nom' => $_POST["nom"] , 'couleur' => $_POST["couleur"] , 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"] , 'idFournisseur' => $_POST["idFournisseur"] , 'prix' => $_POST["prix"] , 'stock' => $_POST["stock"]);
         $i=$_POST['idBouleDeNoel'] ;
-        ModelUtilisateur::update($data,$i);
-        $tab_b = ModelUtilisateur::selectAll();
-        $view='updated';
-        $pagetitle='Validation mise à jour utilisateur';
-        require(File::build_path(Array("view","view.php")));
-
+        $erreur=ModelBouleDeNoel::update($data,$i);
+        if($erreur==0) {
+            $view='error';
+            $pagetitle='Erreur mise à jour boule de Noël';
+        }
+        else{
+            $tab_b = ModelBouleDeNoel::selectAll();
+            $view='updated';
+            $pagetitle='Validation mise à jour de la boule de Noël';
+            require(File::build_path(Array("view","view.php")));
+        }
     }
 }
