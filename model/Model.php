@@ -15,7 +15,7 @@ class Model {
 
 
 		try {
-				// Connexion à la base de données            
+        // Connexion à la base de données
 		// Le dernier argument sert à ce que toutes les chaines de caractères 
 		// en entrée et sortie de MySql soit dans le codage UTF-8
 			self::$pdo = new PDO("mysql:host=$hostname;dbname=$database_name", $login, $password,
@@ -65,7 +65,6 @@ class Model {
             return false;
         return $tab_gen[0];
     }
-
 
     public static function delete($primary_value) {
         $table_name = static::$nomTable;
