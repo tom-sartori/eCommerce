@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="./css.css">
+    <?php
+    echo '<link rel="stylesheet" type="text/css" href="./css/general.css" >';
+    ?>
     <meta charset="UTF-8">
     <title><?php echo $pagetitle; ?></title>
 </head>
 <body>
 <nav>
 	 <p style=" border: 1px solid black;text-align: center ;padding-right:1em;">
-    <a href="index.php?controller=BouleDeNoel&action=readAll"> <strong>Liste des boulles de noel</strong></a>
+    <a href="index.php?controller=BouleDeNoel&action=readAll"> <strong>Liste des boules de noel</strong></a>
     <a href="index.php?controller=Utilisateur&action=readAll" , style="padding-right: 20% ; padding-left: 20%"><strong>Liste des utilisateurs</strong></a>
     <a href="index.php?controller=Fournisseur&action=readAll"><strong>Liste des Fournisseurs</strong></a>
     </p>

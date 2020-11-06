@@ -25,7 +25,7 @@
         <input type="number" name="idBouleDeNoel" id="idBouleDeNoel_id" value="<?php echo $idBouleDeNoel ?>" <?php 
         if($_GET['action']=='create') 
          {echo "required";} 
-        else if($type='create') 
+        else if($_GET['action']=='update') 
           {echo 'readonly="readonly"';} ?> />
         <input type="hidden" name="controller" value="<?php echo static::$object ?>" />
   	   </p>

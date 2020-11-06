@@ -41,4 +41,59 @@ class ControllerUtilisateur{
 
         require_once(File::build_path(array("view", "view.php")));
     }
+
+    public static function error(){
+    
+        $view='error';
+        $pagetitle='Page d\'erreur ';
+        require(File::build_path(Array("view","view.php")));
+    }
+
+    public static function create(){
+        $view='update';
+        $login="";
+        $nom="";
+        $prenom="";
+        $adresse="";
+        $adresseMail="";
+        $pays="";
+        $pagetitle='Formulaire de création d\'un utilisateur';
+        require (File::build_path(Array("view","view.php")));
+    }
+
+    public static function update(){
+        $login= htmlspecialchars("" . $_GET["login"]);
+        $u = ModelUtilisateur::select($idUtilisateur);
+        $nom=htmlspecialchars("{$u->get('nom')}") ;
+        $prenom=htmlspecialchars("{$u->get('prenom')}") ;
+        $adresse= htmlspecialchars("{$u->get('adresse')}");
+        $adresseMail= htmlspecialchars("{$u->get('adresseMail')}");
+        $pays= htmlspecialchars("{$u->get('pays')}");
+  
+        $tab_u = ModelUtilisateur::selectAll();
+        $view='update';
+        $pagetitle='Formulaire de mise à jour d\'un Utilisateur';
+        require(File::build_path(Array("view","view.php")));
+
+    }
+
+        public static function created(){
+        $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"]);
+        ModelUtilisateur::save($data);
+        $tab_f = ModelUtilisateur::selectAll();
+        $view='created';
+        $pagetitle='Validation création utilisateur';
+        require(File::build_path(Array("view","view.php")));
+    }
+
+    public static function updated(){
+         $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
+        $l=$_POST['login'] ;
+        ModelUtilisateur::update($data,$i);
+        $tab_f = ModelUtilisateurr::selectAll();
+        $view='updated';
+        $pagetitle='Validation mise à jour utilisateur';
+        require(File::build_path(Array("view","view.php")));
+
+    }
 }
