@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php
-    echo '<link rel="stylesheet" type="text/css" href="./css/general.css" >';
-    ?>
+    link rel="stylesheet" type="text/css" href="./css/general.css"
     <meta charset="UTF-8">
     <title><?php echo $pagetitle; ?></title>
 </head>
