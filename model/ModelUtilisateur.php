@@ -33,7 +33,6 @@ class ModelUtilisateur extends Model{
         }
     }
 
-
     public function get($nom_attribut) {
         if (property_exists($this, $nom_attribut))
             return $this->$nom_attribut;
@@ -46,57 +45,4 @@ class ModelUtilisateur extends Model{
             $this->$nom_attribut = $valeur;
         return false;
     }
-
-
-    /**
-     * @return mixed
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdresseMail()
-    {
-        return $this->adresseMail;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-
-
-
 }

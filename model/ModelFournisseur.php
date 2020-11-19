@@ -42,48 +42,4 @@ class ModelFournisseur extends Model {
             $this->$nom_attribut = $valeur;
         return false;
     }
-
-
-    /**
-     * @return mixed
-     */
-    public function getIdFournisseur()
-    {
-        return $this->idFournisseur;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdresseMail()
-    {
-        return $this->adresseMail;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-
-
 }
