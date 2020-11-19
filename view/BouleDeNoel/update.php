@@ -13,6 +13,7 @@
             <label for="prix_id">Prix de la boule</label>
             <label for="stock_id">Stock</label>
             <label for="idFournisseur_id">Identifiant fournisseur</label>
+            <label for="idBouleDeNoel_id">Id boule</label>
         </p>
         <p>
             <input type="text" name="nom" id="nom_id" value="<?= $nom ?>" required/>
@@ -21,9 +22,9 @@
             <input type="text" name="matiere" id="matiere_id" value="<?= $matiere ?>" required/>
             <input type="number" name="prix" id="prix_id" value="<?= $prix ?>" required/>
             <input type="number" name="stock" id="stock_id" value="<?= $stock ?>" required/>
-            <input type="number" name="idFournisseur" id="idFournisseur_id" value="<?= $idFournisseur ?>" required>
-            <input type="number" name="idBouleDeNoel" id="idBouleDeNoel_id" value="<?= $idBouleDeNoel ?>" <?= ($update_b)?'readonly="readonly"':'required'?>
-            <input type="hidden" name="controller" value="<?= static::$object ?>" />
+            <input type="number" name="idFournisseur" id="idFournisseur_id" value="<?= $idFournisseur ?>" <?= ($update_b)?'readonly="readonly"':'required'?>/>
+            <input type="number" name="idBouleDeNoel" id="idBouleDeNoel_id" value="<?= $idBouleDeNoel ?>" <?= ($update_b)?'readonly="readonly"':'required'?>/>
+            <input type="hidden" name="controller" value="<?= static::$object ?>"/>
         </p>
         <p>
             <input type="submit" value="Envoyer" />
