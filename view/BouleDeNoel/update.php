@@ -1,12 +1,4 @@
 <?php
-    $b_htmlNom = htmlspecialchars($b->get('nom'));
-    $b_htmlIdBouleDeNoel = htmlspecialchars($b->get('idBouleDeNoel'));
-    $b_htmlCouleur = htmlspecialchars($b->get('couleur'));
-    $b_htmlTaille = htmlspecialchars($b->get('taille'));
-    $b_htmlMatiere = htmlspecialchars($b->get('matiere'));
-    $b_htmlStocks = htmlspecialchars($b->get('stock'));
-    $b_htmlFournisseur = htmlspecialchars($b->get('idFournisseur'));
-
     $update_b = $_GET['action'] == 'update';
 ?>
 
