@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="./css/general.css">
-    <meta charset="UTF-8">
-    <title><?php echo $pagetitle; ?></title>
-</head>
+    <head>
+        <link rel="stylesheet" href="./css/general.css">
+        <meta charset="UTF-8">
+        <title>
+            <?php echo $pagetitle; ?>
+        </title>
+    </head>
+
     <body>
         <nav>
             <p style=" border: 1px solid black;text-align: center ;padding-right:1em;">
@@ -16,8 +19,8 @@
 
         <main>
             <?php
-            $filepath = File::build_path(array("view", static::$object, "$view.php"));
-            require $filepath;
+                $filepath = File::build_path(array("view", static::$object, "$view.php"));
+                require $filepath;
             ?>
         </main>
 
