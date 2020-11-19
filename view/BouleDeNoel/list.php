@@ -8,8 +8,8 @@ foreach ($tab_b as $b) {
         <p>
             Boule de noel de numero de série : 
             <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$b_raw}">
-                {$b_spe} 
-            </a>
+                {$b_spe}
+            </a> 
             <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
                 <button>Supprimer cette boule de noël</button>
             </a> 
@@ -20,5 +20,5 @@ EOT;
 echo <<< EOT
     <a href="./index.php?controller=BouleDeNoel&action=create">
         <button>Ajouter une boule de noël</button>
-    </a>'
+    </a>
 EOT;
