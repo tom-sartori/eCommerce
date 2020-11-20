@@ -15,18 +15,8 @@ class ModelBouleDeNoel extends Model{
     protected static $object='BouleDeNoel';
     protected static $primary = 'idBouleDeNoel';
 
-    /**
-     * ModelBouleDeNoel constructor.
-     * @param $idBouleDeNoel
-     * @param $nom
-     * @param $couleur
-     * @param $taille
-     * @param $matiere
-     * @param $fournisseur
-     * @param $stocks
-     */
-    public function __construct($idBouleDeNoel=NULL, $nom=NULL, $couleur=NULL, $taille=NULL, $matiere=NULL, $idFournisseur=NULL, $stock=NULL , $prix=NULL)
-    {
+
+    public function __construct($idBouleDeNoel=NULL, $nom=NULL, $couleur=NULL, $taille=NULL, $matiere=NULL, $idFournisseur=NULL, $stock=NULL , $prix=NULL) {
         if (!is_null($idBouleDeNoel) && !is_null($nom) && !is_null($couleur) && !is_null($taille) && !is_null($matiere) && !is_null($stock) && !is_null($idFournisseur) && !is_null($prix)) {
             $this->idBouleDeNoel = $idBouleDeNoel;
             $this->nom = $nom;

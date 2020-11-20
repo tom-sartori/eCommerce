@@ -7,20 +7,13 @@ class ModelFournisseur extends Model {
     private $adresse;
     private $adresseMail;
     private $pays;
+
     protected static $nomTable = 'p_Fournisseur';
     protected static $object='Fournisseur';
     protected static $primary='idFournisseur';
 
-    /**
-     * ModelFournisseur constructor.
-     * @param $idFournisseur
-     * @param $nom
-     * @param $adresse
-     * @param $adresseMail
-     * @param $pays
-     */
-    public function __construct($idFournisseur=NULL, $nom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
-    {
+
+    public function __construct($idFournisseur=NULL, $nom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL) {
         if (!is_null($idFournisseur) && !is_null($nom) && !is_null($adresse) && !is_null($pays) && !is_null($adresseMail)) {
             $this->idFournisseur = $idFournisseur;
             $this->nom = $nom;
