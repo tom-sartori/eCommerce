@@ -79,21 +79,36 @@ class ControllerUtilisateur{
 
         public static function created(){
         $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"]);
-        ModelUtilisateur::save($data);
-        $tab_f = ModelUtilisateur::selectAll();
-        $view='created';
-        $pagetitle='Validation création utilisateur';
-        require(File::build_path(Array("view","view.php")));
+        $erreur= ModelUtilisateur::save($data);
+        if($erreur == 0){
+            $view='error';
+            $pagetitle='Erreur création utilisateur';
+            require(File::build_path(Array("view","view.php")));
+        }
+        else{
+            $tab_u = ModelUtilisateur::selectAll();
+            $view='created';
+            $pagetitle='Validation création utilisateur';
+            require(File::build_path(Array("view","view.php")));
+        }
+        
     }
 
     public static function updated(){
          $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
         $l=$_POST['login'] ;
-        ModelUtilisateur::update($data,$i);
-        $tab_f = ModelUtilisateurr::selectAll();
-        $view='updated';
-        $pagetitle='Validation mise à jour utilisateur';
-        require(File::build_path(Array("view","view.php")));
+        $erreur=ModelUtilisateur::update($data,$i);
+        if($erreur == 0){
+            $view='error';
+            $pagetitle='Erreur mise à jour utilisateur';
+            require(File::build_path(Array("view","view.php")));
+        }
+        else{
+            $tab_u = ModelUtilisateurr::selectAll();
+            $view='updated';
+            $pagetitle='Validation mise à jour utilisateur';
+            require(File::build_path(Array("view","view.php")));
+        }
 
     }
 }

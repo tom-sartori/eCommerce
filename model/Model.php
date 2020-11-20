@@ -79,10 +79,10 @@ class Model {
                 "valeur"=> $primary_value
             );
             $req_prep->execute($value);
-            return $primary_value;
         }
         catch (PDOException $e) {
             echo $e->getMessage();
+            return 0;
         }
     }
 
@@ -105,6 +105,7 @@ class Model {
    catch( PDOException $e){
       echo " La mise à jour dans la base a rencontré cette erreur : <br>";
       echo "{$e->getMessage()} <br><br>";
+      return 0;
   }
 }
 
@@ -126,6 +127,7 @@ public static function save($data){
     catch(PDOException $e){
         echo "L'insertion dans la base de données a rencontré cette erreur : <br> ";
     echo "{$e->getMessage()} <br><br>";
+    return 0;
     }
 }
 
