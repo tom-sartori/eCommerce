@@ -5,8 +5,7 @@ require_once (File::build_path(array("model","ModelBouleDeNoel.php"))); // charg
 class ControllerBouleDeNoel{
   
     protected static $object ="BouleDeNoel";
-  
-  
+
     public static function readAll() {
         $view='list';
         $pagetitle='Liste des BouleDeNoel';
@@ -17,12 +16,13 @@ class ControllerBouleDeNoel{
   
       public static function read(){
         $idBouleDeNoel = $_GET['idBouleDeNoel'];
-        $b=ModelBouleDeNoel::select($idBouleDeNoel);
+        $b = ModelBouleDeNoel::select($idBouleDeNoel);
         if($b==null){
             $view='error';
             $pagetitle='Erreur BouleDeNoel';
             require (File::build_path(array("view","view.php")));
-        }else {
+        }
+        else {
             $view = 'detail';
             $pagetitle = 'Details boule de noel';
             require(File::build_path(array("view", "view.php")));
@@ -42,14 +42,12 @@ class ControllerBouleDeNoel{
     }
 
     public static function error(){
-    
         $view='error';
         $pagetitle='Page d\'erreur ';
         require(File::build_path(Array("view","view.php")));
     }
 
     public static function create(){
-        $view='update';
         $idBouleDeNoel="";
         $nom="";
         $couleur="";
@@ -58,6 +56,8 @@ class ControllerBouleDeNoel{
         $idFournisseur="";
         $prix="";
         $stock="";
+
+        $view='update';
         $pagetitle='Formulaire de création d\'une boule de Noël';
         require (File::build_path(Array("view","view.php")));
     }
@@ -65,22 +65,21 @@ class ControllerBouleDeNoel{
     public static function update(){
         $idBouleDeNoel= htmlspecialchars("" . $_GET["idBouleDeNoel"]);
         $b = ModelBouleDeNoel::select($idBouleDeNoel);
-        $nom=htmlspecialchars("{$b->get('nom')}") ;
-        $couleur= htmlspecialchars("{$b->get('couleur')}");
-        $taille= htmlspecialchars("{$b->get('taille')}");
-        $matiere= htmlspecialchars("{$b->get('matiere')}");
-        $idFournisseur= htmlspecialchars("{$b->get('idFournisseur')}");
-        $prix= htmlspecialchars("{$b->get('prix')}");
-        $stock= htmlspecialchars("{$b->get('stock')}");
+        $nom = htmlspecialchars("{$b->get('nom')}") ;
+        $couleur = htmlspecialchars("{$b->get('couleur')}");
+        $taille = htmlspecialchars("{$b->get('taille')}");
+        $matiere = htmlspecialchars("{$b->get('matiere')}");
+        $idFournisseur = htmlspecialchars("{$b->get('idFournisseur')}");
+        $prix = htmlspecialchars("{$b->get('prix')}");
+        $stock = htmlspecialchars("{$b->get('stock')}");
         $tab_b = ModelBouleDeNoel::selectAll();
+
         $view='update';
         $pagetitle='Formulaire de mise à jour d\'une boule de Noël';
         require(File::build_path(Array("view","view.php")));
-
     }
 
         public static function created(){
-
         $data= array('nom' => $_POST["nom"] , 'couleur' => $_POST["couleur"] , 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"] , 'idFournisseur' => $_POST["idFournisseur"] , 'prix' => $_POST["prix"] , 'stock' => $_POST["stock"] , 'idBouleDeNoel' => $_POST["idBouleDeNoel"]);
         $erreur=ModelBouleDeNoel::save($data);
         if($erreur==0) {

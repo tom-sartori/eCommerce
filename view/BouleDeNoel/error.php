@@ -1,3 +1,1 @@
-<div>
-	<p> Une erreur est survenue </p>
-</div>
+<p> Une erreur est survenue. </p>
