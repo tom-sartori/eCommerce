@@ -12,6 +12,8 @@
             <label for="adresse_id">Adresse</label>
             <label for="pays_id">Pays </label>
             <label for="login_id">Login utilisateur</label>
+            <label for="mdp_id">Mot de Passe</label> 
+            <label for="mdpconfirm_id">Confirm. mot de passe</label>
         </p>
         <p>
             <input type="text" name="nom" id="nom_id" value= "<?= $nom ?>" required/>
@@ -20,6 +22,8 @@
             <input type="text" name="adresse" id="adresse_id" value="<?= $adresse ?>" required/>
             <input type="text" name="pays" id="pays_id" value="<?= $pays ?>" required/>
             <input type="text" name="login" id="login_id" value="<?= $login ?>" <?=($update_b)?'readonly="readonly"':'required'?>/>
+            <input type="password" name="mdp" id="mdp_id" value="<?= $mdp ?>" required>
+            <input type="password" name="mdpconfirm" id="mdpconfirm_id" value="<?= $mdp ?>" required>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
         </p>
         <p>

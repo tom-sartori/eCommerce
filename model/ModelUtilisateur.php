@@ -45,4 +45,28 @@ class ModelUtilisateur extends Model{
             $this->$nom_attribut = $valeur;
         return false;
     }
+
+    public static function checkPassword($login,$mdphache){
+        $table_name= static::$object;
+        $class_name= "Model" . ucfirst($table_name);
+        try{
+          $rep=Model::$pdo->query("SELECT mdp FROM $table_name WHERE login=\"" . $login . "\"" );
+          //$rep->setFetchMode( PDO::FETCH_ASSOC);
+          $tab = $rep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+          if(Conf::getDebug()){
+            echo $e->getMessage();
+          }
+          else{
+            echo "Une erreur est survenue";
+          }
+          die();
+        }
+        if(isset($tab["mdp"]))
+            return $tab["mdp"]==$mdphache;
+        else
+            return 0;
+  }
+  
 }
