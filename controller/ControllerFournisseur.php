@@ -92,12 +92,12 @@ class ControllerFournisseur{
     }
 
     public static function updated(){
-         $data= array('nom' => $_POST["nom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
-        $i=$_POST['idFournisseur'] ;
-        $erreur=ModelFournisseur::update($data,$i);
+        $data = array('nom' => $_POST["nom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
+        $i = $_POST['idFournisseur'] ;
+        $erreur = ModelFournisseur::update($data,$i);
         if($erreur == 0){
             $view='error';
-            $pagetitle='Erreru création fournisseur';
+            $pagetitle='Erreur création fournisseur';
             require(File::build_path(Array("view","view.php")));
         }
         else{

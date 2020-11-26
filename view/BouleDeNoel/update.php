@@ -2,7 +2,7 @@
     $update_b = $_GET['action'] == 'update';
 ?>
 
-<form method="post" action="index.php?controller=<?= static::$object ?>&action=<?= ($update_b)?'updated':'create'?>"
+<form method="post" action="index.php?controller=<?= static::$object ?>&action=<?= ($update_b)?'updated':'created'?>"
     <fieldset>
         <legend >Formulaire de création / mise à jour d'une boule de Noël : </legend>
         <p>
