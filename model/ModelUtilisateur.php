@@ -47,8 +47,7 @@ class ModelUtilisateur extends Model{
     }
 
     public static function checkPassword($login,$mdphache){
-        $table_name= static::$object;
-        $class_name= "Model" . ucfirst($table_name);
+        $table_name= self::$nomTable;
         try{
           $rep=Model::$pdo->query("SELECT mdp FROM $table_name WHERE login=\"" . $login . "\"" );
           //$rep->setFetchMode( PDO::FETCH_ASSOC);
@@ -68,5 +67,5 @@ class ModelUtilisateur extends Model{
         else
             return 0;
   }
-  
+
 }

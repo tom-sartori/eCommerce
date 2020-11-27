@@ -31,7 +31,7 @@
         </main>
 
         <footer>
-            <p style="border: 1px solid black;text-align:right;padding-right:1em;">
+            <p>
             Site de vente de grosses boulasses
             </p>
         </footer>

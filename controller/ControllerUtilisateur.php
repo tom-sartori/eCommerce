@@ -44,6 +44,9 @@ class ControllerUtilisateur{
 
             require_once(File::build_path(array("view", "view.php")));
         }
+        else{
+            self::connect();
+        }
     }
 
     public static function error(){
@@ -61,6 +64,7 @@ class ControllerUtilisateur{
         $adresse="";
         $adresseMail="";
         $pays="";
+        $mdp="";
         $pagetitle='Formulaire de création d\'un utilisateur';
         require (File::build_path(Array("view","view.php")));
     }
@@ -89,7 +93,7 @@ class ControllerUtilisateur{
         public static function created(){
             if($_POST["mdp"]==$_POST["mdpconfirm"]){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
-                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"]);
+                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"] , 'mdp' => $mdpcrypte);
                 $erreur= ModelUtilisateur::save($data);
                 if($erreur == 0){
                     $view='error';
@@ -120,7 +124,7 @@ class ControllerUtilisateur{
         if(Session::is_user($_POST["login"])){
             if($_POST["mdp"]==$_POST["mdpconfirm"]){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
-                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
+                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'mdp' => $mdpcrypte );
                 $l=$_POST['login'] ;
                 $erreur=ModelUtilisateur::update($data,$i);
                 if($erreur == 0){
@@ -140,7 +144,7 @@ class ControllerUtilisateur{
                 $u = ModelUtilisateur::select($l);
                 $nom=htmlspecialchars("{$u->get('nom')}") ;
                 $prenom= htmlspecialchars("{$u->get('prenom')}");
-                $mdp= htmlspecialchars("{$u->get('mdp')}");
+                $mdp="";
                 $tab_u = ModelUtilisateur::selectAll();
                 $view='update';
                 $pagetitle='Formulaire de mise à jour d\'un utilisateur';
