@@ -1,0 +1,62 @@
+html {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+button {
+    margin: 1px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    border-radius: 3px;
+}
+
+button:hover{
+    background-color: lightgreen;
+}
+
+input{
+    margin: 1px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    border-radius: 3px;
+}
+
+input:hover{
+    background-color: lightgreen;
+}
+
+nav {
+    border: 1px solid black;
+    font-size: 25px;
+    margin-bottom: 10px;
+    background-color: lightgreen;
+    padding: 5px;
+}
+nav a{
+    border: 2px solid #e04c4c;
+    border-radius: 3px;
+    margin-right: 10px;
+    background-color: #f3c9c9;
+}
+
+nav a:hover{
+    background-color: darkred;
+}
+
+a {
+    text-decoration: none;
+    color: #dd1e1e;
+}
+
+a:hover {
+    color: red;
+}
+
+footer {
+    border: 1px solid black;
+    text-align:right;
+    padding-right:1em;
+    margin-top : 10px;
+}

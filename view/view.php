@@ -20,7 +20,6 @@
             <a href="index.php?controller=BouleDeNoel&action=readAll" > <strong>Liste des boules de noel</strong></a>
             <a href="index.php?controller=Utilisateur&action=readAll"> <strong>Liste des utilisateurs</strong></a>
             <a href="index.php?controller=Fournisseur&action=readAll"> <strong>Liste des Fournisseurs</strong></a>
-            </p>
         </nav>
 
         <main>
@@ -31,9 +30,9 @@
         </main>
 
         <footer>
-            <p>
-            Site de vente de grosses boulasses
-            </p>
+            <h3>
+                Des boules pour tous
+            </h3>
         </footer>
     </body>
 </html>

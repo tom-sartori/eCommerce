@@ -23,7 +23,6 @@ class ModelFournisseur extends Model {
         }
     }
 
-
     public function get($nom_attribut) {
         if (property_exists($this, $nom_attribut))
             return $this->$nom_attribut;
