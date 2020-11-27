@@ -109,6 +109,5 @@ class ControllerUtilisateur{
             $pagetitle='Validation mise à jour utilisateur';
             require(File::build_path(Array("view","view.php")));
         }
-
     }
 }

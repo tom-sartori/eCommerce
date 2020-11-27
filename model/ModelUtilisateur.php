@@ -13,14 +13,7 @@ class ModelUtilisateur extends Model{
     protected static $object='Utilisateur';
     protected static $primary='login';
 
-    /**
-     * ModelUtilisateur constructor.
-     * @param $login
-     * @param $nom
-     * @param $prenom
-     * @param $adresse
-     * @param $adresseMail
-     */
+
     public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
     {
         if (!is_null($login) && !is_null($nom) && !is_null($prenom) && !is_null($adresse) && !is_null($adresseMail) && !is_null($pays)) {
