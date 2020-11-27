@@ -8,6 +8,7 @@ class ModelUtilisateur extends Model{
     private $prenom;
     private $adresse;
     private $adresseMail;
+    private $password;
     private $pays;
     protected static $nomTable = 'p_Utilisateur';
     protected static $object='Utilisateur';
@@ -21,7 +22,7 @@ class ModelUtilisateur extends Model{
      * @param $adresse
      * @param $adresseMail
      */
-    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL)
+    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL, $password=NULL)
     {
         if (!is_null($login) && !is_null($nom) && !is_null($prenom) && !is_null($adresse) && !is_null($adresseMail) && !is_null($pays)) {
             $this->login = $login;
@@ -29,9 +30,14 @@ class ModelUtilisateur extends Model{
             $this->prenom = $prenom;
             $this->adresse = $adresse;
             $this->adresseMail = $adresseMail;
+            $this->password=$password;
             $this->pays = $pays;
         }
     }
+
+    public static function addPanier($idboule){
+        array_push($_SESSION['panier'],$idboule);
+}
 
     public function get($nom_attribut) {
         if (property_exists($this, $nom_attribut))

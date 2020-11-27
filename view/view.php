@@ -25,6 +25,9 @@
         </main>
 
         <footer>
+            <a href="./index.php?controller=Utilisateur&action=afficher">
+                <button> <img src="images/graphique-camembert.png" alt="panier"> </button>
+            </a>
             <p>
                 Site de ventes de boules de noël
             </p>

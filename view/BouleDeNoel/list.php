@@ -13,6 +13,9 @@ foreach ($tab_b as $b) {
             <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
                 <button>Supprimer cette boule de noël</button>
             </a> 
+            <a href="./index.php?controller=Utilisateur&action=addPanier&idBouleDeNoel={$b_raw}">
+                <button>Ajout au panier</button>
+            </a>
         </p>
 EOT;
     }

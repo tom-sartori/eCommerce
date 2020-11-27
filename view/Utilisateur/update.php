@@ -11,6 +11,8 @@
             <label for="adresseMail_id">Adresse Mail</label>
             <label for="adresse_id">Adresse</label>
             <label for="pays_id">Pays </label>
+            <label for="password_id"> Password</label>
+            <label for="passwordConfirme_id"> Confirmation password</label>
             <label for="login_id">Login utilisateur</label>
         </p>
         <p>
@@ -19,6 +21,8 @@
             <input type="text" name="adresseMail" id="adresseMail_id" value="<?= $adresseMail ?>" required/>
             <input type="text" name="adresse" id="adresse_id" value="<?= $adresse ?>" required/>
             <input type="text" name="pays" id="pays_id" value="<?= $pays ?>" required/>
+            <input type="password" name="password" id="password_id" value="<?= $password?>" required/>
+            <input type="password" name="passwordConfirme" id="passwordConfirme_id" value="<?= $passwordConfirme?>" required/>
             <input type="text" name="login" id="login_id" value="<?= $login ?>" <?=($update_b)?'readonly="readonly"':'required'?>/>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
         </p>

@@ -56,6 +56,8 @@ class ControllerUtilisateur{
         $prenom="";
         $adresse="";
         $adresseMail="";
+        $password="";
+        $passwordConfirme="";
         $pays="";
         $pagetitle='Formulaire de création d\'un utilisateur';
         require (File::build_path(Array("view","view.php")));
@@ -68,6 +70,8 @@ class ControllerUtilisateur{
         $prenom=htmlspecialchars("{$u->get('prenom')}") ;
         $adresse= htmlspecialchars("{$u->get('adresse')}");
         $adresseMail= htmlspecialchars("{$u->get('adresseMail')}");
+        $password=htmlspecialchars("{$u->get('password')}");
+        $passwordConfirme=htmlspecialchars("{$u->get('passwordConfirme')}");
         $pays= htmlspecialchars("{$u->get('pays')}");
   
         $tab_u = ModelUtilisateur::selectAll();
@@ -78,7 +82,7 @@ class ControllerUtilisateur{
     }
 
         public static function created(){
-        $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"]);
+        $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"] ,'password' => $_POST["password"], 'passwordConfirme' => $_POST["passwordConfirme"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"]);
         $erreur= ModelUtilisateur::save($data);
         if($erreur == 0){
             $view='error';
@@ -95,7 +99,7 @@ class ControllerUtilisateur{
     }
 
     public static function updated(){
-         $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
+         $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"],'password' => $_POST["password"], 'passwordConfirme' => $_POST["passwordConfirme"],'pays' => $_POST["pays"]);
         $l=$_POST['login'] ;
         $erreur=ModelUtilisateur::update($data,$i);
         if($erreur == 0){
@@ -110,5 +114,19 @@ class ControllerUtilisateur{
             require(File::build_path(Array("view","view.php")));
         }
 
+    }
+    public static function addPanier(){
+        ModelUtilisateur::addPanier($_GET['idBouleDeNoel']);
+        $tab_b = ModelBouleDeNoel::selectAll();
+        $controller = 'Utilisateur';
+        $view='addpanier';
+        $pagetitle='ajout au Panier';
+        require(File::build_path(Array("view","view.php")));
+    }
+    public static function afficher(){
+        $tab_panier=[$_SESSION['panier']];
+        $view='panier';
+        $pagetitle='affichage du Panier';
+        require(File::build_path(Array("view","view.php")));
     }
 }
