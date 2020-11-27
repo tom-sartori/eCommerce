@@ -25,9 +25,14 @@
         </main>
 
         <footer>
+            <?php
+            if($_GET['action']!='afficher'){
+            echo '
             <a href="./index.php?controller=Utilisateur&action=afficher">
-                <button> <img src="images/graphique-camembert.png" alt="panier"> </button>
-            </a>
+                <button> <img src="images/panier.png" alt="panier" width="55" height="55"></button>
+            </a>';
+            }
+            ?>
             <p>
                 Site de ventes de boules de noël
             </p>
