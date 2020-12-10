@@ -35,9 +35,14 @@ class ModelUtilisateur extends Model{
         }
     }
 
-    public static function addPanier($idboule){
-        array_push($_SESSION['panier'],$idboule);
-}
+    public static function addPanier($idboule)
+    {
+        if (is_null($_SESSION['panier'])){
+            $_SESSION['panier']=array($idboule);
+        }else {
+            array_push($_SESSION['panier'], $idboule);
+        }
+    }
 
     public function get($nom_attribut) {
         if (property_exists($this, $nom_attribut))

@@ -1,16 +1,16 @@
 <?php
-
-    foreach ($tab_panier as  $key=>$value){
-        foreach ($value as $key1=>$value1) {
-            $b=ModelBouleDeNoel::select($value1);
-
-            $somme=$somme+htmlspecialchars($b->get('prix'));
+    if(!is_null($tab_panier)) {
+        $somme = 0;
+        foreach ($tab_panier as $key => $value) {
+            $b = ModelBouleDeNoel::select($value);
+            $somme = $somme + htmlspecialchars($b->get('prix'));
             echo <<< EOT
-        Vous avez achété la boile de noël d'identifiant <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$value1}">
-                {$value1}
-            </a>  Cliquer dessus pour avoir plus de détails. {$prix} le prix <br>
+        Vous avez achétée la boule de noël d'identifiant <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$value}">
+                {$value}
+            </a>  Cliquer dessus pour avoir plus de détails. <br>
 EOT;
         }
-    }
-    echo 'prix total du panier est '. $somme;
+        echo 'le prix total du panier est ' . $somme;
+    } else
+        echo 'Votre panier est vide veuillez faire des achats';
 ?>

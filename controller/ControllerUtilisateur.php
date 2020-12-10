@@ -123,8 +123,9 @@ class ControllerUtilisateur{
         $pagetitle='ajout au Panier';
         require(File::build_path(Array("view","view.php")));
     }
+
     public static function afficher(){
-        $tab_panier=[$_SESSION['panier']];
+        $tab_panier= $_SESSION['panier'];
         $controller = 'Utilisateur';
         $view='panier';
         $pagetitle='affichage du Panier';
