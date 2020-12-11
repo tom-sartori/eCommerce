@@ -25,3 +25,4 @@ echo <<< EOT
         <button>Ajouter une boule de noël</button>
     </a>
 EOT;
+?>

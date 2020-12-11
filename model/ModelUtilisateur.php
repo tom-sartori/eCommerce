@@ -14,16 +14,8 @@ class ModelUtilisateur extends Model{
     protected static $object='Utilisateur';
     protected static $primary='login';
 
-    /**
-     * ModelUtilisateur constructor.
-     * @param $login
-     * @param $nom
-     * @param $prenom
-     * @param $adresse
-     * @param $adresseMail
-     */
-    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL, $password=NULL)
-    {
+  
+    public function __construct($login= NULL, $nom=NULL, $prenom=NULL, $adresse=NULL, $adresseMail=NULL, $pays=NULL, $password=NULL) {
         if (!is_null($login) && !is_null($nom) && !is_null($prenom) && !is_null($adresse) && !is_null($adresseMail) && !is_null($pays)) {
             $this->login = $login;
             $this->nom = $nom;
@@ -35,8 +27,7 @@ class ModelUtilisateur extends Model{
         }
     }
 
-    public static function addPanier($idboule)
-    {
+    public static function addPanier($idboule){
         if (is_null($_SESSION['panier'])){
             $_SESSION['panier']=array($idboule);
         }else {
@@ -56,4 +47,27 @@ class ModelUtilisateur extends Model{
             $this->$nom_attribut = $valeur;
         return false;
     }
+
+    public static function checkPassword($login,$mdphache){
+        $table_name= self::$nomTable;
+        try{
+          $rep=Model::$pdo->query("SELECT mdp FROM $table_name WHERE login=\"" . $login . "\"" );
+          //$rep->setFetchMode( PDO::FETCH_ASSOC);
+          $tab = $rep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+          if(Conf::getDebug()){
+            echo $e->getMessage();
+          }
+          else{
+            echo "Une erreur est survenue";
+          }
+          die();
+        }
+        if(isset($tab["mdp"]))
+            return $tab["mdp"]==$mdphache;
+        else
+            return 0;
+  }
+
 }
