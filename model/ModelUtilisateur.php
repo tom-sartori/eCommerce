@@ -70,4 +70,85 @@ class ModelUtilisateur extends Model{
             return 0;
   }
 
+  public static function is_admin($login){
+        try{
+          $prep=Model::$pdo->prepare("SELECT admin FROM utilisateur WHERE login='$login'" );
+          $prep->execute();
+          //$rep->setFetchMode( PDO::FETCH_ASSOC);
+          $tab = $prep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+          if(Conf::getDebug()){
+            echo $e->getMessage();
+          }
+          else{
+            echo "Une erreur est survenue";
+          }
+          die();
+        }
+        if(isset($tab["admin"]))
+            return $tab["admin"]==1;
+        else
+            return false;
+  }
+
+  public static function verif($nonce,$login){
+        $table_name= static::$object;
+        try{
+          $prep=Model::$pdo->prepare("SELECT nonce FROM $table_name WHERE login=\"" . $login . "\"" );
+          $prep->execute();
+          //$rep->setFetchMode( PDO::FETCH_ASSOC);
+          $tab = $prep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+          if(Conf::getDebug()){
+            echo $e->getMessage();
+          }
+          else{
+            echo "Une erreur est survenue";
+          }
+          die();
+        }
+        if(isset($tab["nonce"]))
+            return $tab["nonce"]==$nonce;
+        else
+            return false;
+  }
+
+  public static function verifierUser($login){
+    try{
+        $prep=Model::$pdo->prepare("UPDATE utilisateur SET nonce=NULL WHERE login='$login'");
+        $prep->execute();
+    }
+    catch( PDOException $e){
+        echo " La mise à jour dans la base a rencontré cette erreur : <br>";
+        echo "{$e->getMessage()} <br><br>";
+        return 0;
+    }
+    return 1;
+}
+
+  public static function is_verif($login){
+        try{
+          $prep=Model::$pdo->prepare("SELECT nonce FROM utilisateur WHERE login='$login'" );
+          $prep->execute();
+          //$rep->setFetchMode( PDO::FETCH_ASSOC);
+          $tab = $prep->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+          if(Conf::getDebug()){
+            echo $e->getMessage();
+          }
+          else{
+            echo "Une erreur est survenue";
+          }
+          die();
+        }
+        if(isset($tab["nonce"]))
+            return false;
+        else
+            return true;
+
+  }
+
 }
