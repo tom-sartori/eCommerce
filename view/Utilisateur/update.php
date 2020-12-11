@@ -11,8 +11,6 @@
             <label for="adresseMail_id">Adresse Mail</label>
             <label for="adresse_id">Adresse</label>
             <label for="pays_id">Pays </label>
-            <label for="password_id"> Password</label>
-            <label for="passwordConfirme_id"> Confirmation password</label>
             <label for="login_id">Login utilisateur</label>
             <label for="mdp_id">Mot de Passe</label> 
             <label for="mdpconfirm_id">Confirm. mot de passe</label>
@@ -24,7 +22,7 @@
             <input type="text" name="prenom" id="prenom_id" value= "<?= $prenom ?>" required/>
             <br>
             <label for="adresseMail_id">Adresse Mail</label>
-            <input type="text" name="adresseMail" id="adresseMail_id" value="<?= $adresseMail ?>" required/>
+            <input type="email" name="adresseMail" id="adresseMail_id" value="<?= $adresseMail ?>" required/>
             <br>
             <label for="adresse_id">Adresse</label>
             <input type="text" name="adresse" id="adresse_id" value="<?= $adresse ?>" required/>
