@@ -33,12 +33,16 @@ class ControllerUtilisateur{
   
       public static function delete() {
         $login=rawurldecode("{$_GET["login"]}");
-        if(Session::is_user($login)){
-            $login = ModelUtilisateur::delete($_GET['login']);
-
+        if(Session::is_user($login) || Session::is_admin($login)){
+            if(ModelUtilisateur::delete($login)==0)
+                self::error();
+            else{
+                if(Session::is_user($login)){
+                    session_unset();
+                    session_destroy();  
+                    setcookie(session_name(),"", time()-1,"/" );
+                }
             $tab_u = ModelUtilisateur::selectAll();
-
-            $controller = 'Utilisateur';
             $view = 'deleted';
             $pagetitle = 'Utilisateur supprimé';
 
@@ -63,8 +67,6 @@ class ControllerUtilisateur{
         $prenom="";
         $adresse="";
         $adresseMail="";
-        $password="";
-        $passwordConfirme="";
         $pays="";
         $mdp="";
         $pagetitle='Formulaire de création d\'un utilisateur';
@@ -73,14 +75,14 @@ class ControllerUtilisateur{
 
     public static function update(){
         $login= htmlspecialchars("" . $_GET["login"]);
-        if(Session::is_user($login)){
+        if(Session::is_user($login) || Session::is_admin($login)){
             $u = ModelUtilisateur::select($login);
             $nom=htmlspecialchars("{$u->get('nom')}") ;
             $prenom=htmlspecialchars("{$u->get('prenom')}") ;
             $adresse= htmlspecialchars("{$u->get('adresse')}");
             $adresseMail= htmlspecialchars("{$u->get('adresseMail')}");
             $pays= htmlspecialchars("{$u->get('pays')}");
-      
+            $mdp="";
             $tab_u = ModelUtilisateur::selectAll();
             $view='update';
             $pagetitle='Formulaire de mise à jour d\'un Utilisateur';
@@ -92,16 +94,20 @@ class ControllerUtilisateur{
     }
 
         public static function created(){
-            if($_POST["mdp"]==$_POST["mdpconfirm"]){
+            if($_POST["mdp"]==$_POST["mdpconfirm"] && filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
-                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"] , 'mdp' => $mdpcrypte);
-                $erreur= ModelUtilisateur::save($data);
-                if($erreur == 0){
-                    $view='error';
-                    $pagetitle='Erreur création utilisateur';
-                    require(File::build_path(Array("view","view.php")));
+                $nonce= Security::generateRandomHex();
+                if(!(isset($_POST['admin'])))
+                    $admin=0;
+                else
+                    $admin=1;
+                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'login' => $_POST["login"] , 'mdp' => $mdpcrypte , 'nonce' => $nonce , 'admin' => $admin);
+               
+                if( ModelUtilisateur::save($data) == 0){
+                    self::error();
                 }
                 else{
+                    self::mailUser($_POST['login'],$nonce,$_POST['adresseMail']);
                     $tab_u = ModelUtilisateur::selectAll();
                     $view='created';
                     $pagetitle='Validation création utilisateur';
@@ -109,29 +115,36 @@ class ControllerUtilisateur{
                 }
             }
             else {
-            $view='update';
-            $pagetitle='Formulaire de création d\'un utilisateur';
-            $login="";
-            $nom="";
-            $prenom="";
-            $mdp="";
-            $message="Les deux mots de passe ne correspondent pas ! ";
-            require (File::build_path(Array("view","view.php")));
+                $view='update';
+                $action='create';
+                $pagetitle='Formulaire de création d\'un utilisateur';
+                $login="";
+                $nom="";
+                $prenom="";
+                $pays="";
+                $adresse="";
+                $adresseMail="";
+                $mdp="";
+                if($_POST["mdp"]==$_POST["mdpconfirm"])
+                    $message="L'adresse email n'est pas valide ! ";
+                else
+                    $message="Les deux mots de passe ne correspondent pas ! ";
+                require (File::build_path(Array("view","view.php")));
         }        
     }
 
     public static function updated(){
-        if(Session::is_user($_POST["login"])){
-            if($_POST["mdp"]==$_POST["mdpconfirm"]){
+        if(Session::is_user($_POST["login"]) || Session::is_admin($_POST["login"])){
+            if($_POST["mdp"]==$_POST["mdpconfirm"]  && filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) ){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
-                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'mdp' => $mdpcrypte );
+                if(!(isset($_POST['admin'])))
+                    $admin=0;
+                else
+                    $admin=1;
+                $data= array('nom' => $_POST["nom"] , 'prenom' => $_POST["prenom"] , 'adresse' => $_POST["adresse"] , 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"] , 'mdp' => $mdpcrypte , 'admin' => $admin);
                 $l=$_POST['login'] ;
-                $erreur=ModelUtilisateur::update($data,$i);
-                if($erreur == 0){
-                    $view='error';
-                    $pagetitle='Erreur mise à jour utilisateur';
-                    require(File::build_path(Array("view","view.php")));
-                }
+                if(ModelUtilisateur::update($data,$l)==0)
+                    self::error();
                 else{
                     $tab_u = ModelUtilisateurr::selectAll();
                     $view='updated';
@@ -144,11 +157,17 @@ class ControllerUtilisateur{
                 $u = ModelUtilisateur::select($l);
                 $nom=htmlspecialchars("{$u->get('nom')}") ;
                 $prenom= htmlspecialchars("{$u->get('prenom')}");
+                $pays= htmlspecialchars("{$u->get('pays')}");
+                $adresse= htmlspecialchars("{$u->get('adresse')}");
+                $adresseMail= htmlspecialchars("{$u->get('adresseMail')}");
                 $mdp="";
                 $tab_u = ModelUtilisateur::selectAll();
                 $view='update';
                 $pagetitle='Formulaire de mise à jour d\'un utilisateur';
-                $message="Les deux mots de passe ne correspondent pas ! ";
+                if($_POST["mdp"]==$_POST["mdpconfirm"])
+                    $message="L'adresse email n'est pas valide ! ";
+                else
+                    $message="Les deux mots de passe ne correspondent pas ! ";
                 require (File::build_path(Array("view","view.php")));
             }
         }
@@ -156,7 +175,29 @@ class ControllerUtilisateur{
             self::connect();
         }
 
+    }
 
+    public static function validate() {
+        if(ModelUtilisateur::select($_GET['login']) && ModelUtilisateur::verif($_GET['nonce'],$_GET['login']))
+            ModelUtilisateur::verifierUser($_GET['login']);
+        self::readAll();
+    }
+
+    public static function mailUser($login,$none,$mail){
+        $login= rawurlencode($login);
+        $nonce= rawurlencode($none);
+        $texte='<!doctype html>
+            <html >
+                <head>
+                  <meta charset="utf-8">
+                  <title>Mail de confirmation</title>
+                </head>
+                <body>
+                  <a href="http://localhost/TD7/index.php?controller=utilisateur&action=validate&login=' . $l . '&nonce=' . $n . '"> Validez votre compte </a>
+                </body>
+                
+            </html>';
+        mail($mail, "..........." , $texte);
     }
 
     public static function connect(){
@@ -167,8 +208,9 @@ class ControllerUtilisateur{
 
     public static function connected(){
         $mdpcrypte= Security::hacher($_POST["mdp"]);
-        if(ModelUtilisateur::checkPassword($_POST["login"],$mdpcrypte)){
+        if(ModelUtilisateur::checkPassword($_POST["login"],$mdpcrypte) && ModelUtilisateur::is_verif($_POST["login"]) ){
             $_SESSION["login"]=$_POST["login"];
+            $_SESSION["admin"]=ModelUtilisateur::is_admin($_POST["login"]);
             $u= ModelUtilisateur::select($_POST["login"]);
             $view='detail';
             $pagetitle='Page de détail de l\'utilisateur';
@@ -177,7 +219,10 @@ class ControllerUtilisateur{
         else{
             $view='connect';
             $pagetitle='Page de connexion';
-            $message="Ces identifiants n'existent pas !";
+            if(ModelUtilisateur::checkPassword($_POST["login"],$mdpcrypte))
+                $message="Veuillez d'abord vérifier votre adresse email !";
+            else
+                $message="Ces identifiants n'existent pas !";
             require(File::build_path(Array("view","view.php")));
         }
     }
