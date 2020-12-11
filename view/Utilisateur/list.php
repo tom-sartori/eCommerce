@@ -11,12 +11,14 @@ foreach ($tab_u as $u) {
                 {$u_html}
             </a>
             <br>
-            ($is_user) ? 
-            <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
-                <button>Supprimer cet Utilisateur</button>
-            </a> : "" ;
-        </p>
 EOT;
+            if ($is_user) {
+                echo '
+                    <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
+                        <button>Supprimer cet Uuuuutilisateur</button>
+                    </a>';
+            }
+        echo '</p>';
 }
 
 echo '<a href="./index.php?controller=Utilisateur&action=create"><button>Ajouter un utilisateur</button></a>';
