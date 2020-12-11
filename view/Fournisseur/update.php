@@ -10,7 +10,7 @@
             <input type="text" name="nom" id="nom_id" value= "<?= $nom ?>" required/>
             <br>
             <label for="adresseMail_id">Adresse Mail</label>
-            <input type="text" name="adresseMail" id="adresseMail_id" value="<?= $adresseMail ?>" required/>
+            <input type="email" name="adresseMail" id="adresseMail_id" value="<?= $adresseMail ?>" required/>
             <br>
             <label for="adresse_id">Adresse</label>
             <input type="text" name="adresse" id="adresse_id" value="<?= $adresse ?>" required/>

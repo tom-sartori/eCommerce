@@ -6,6 +6,7 @@ $u_htmlLogin = htmlspecialchars($u->get('login'));
 $u_htmlAdresse = htmlspecialchars($u->get('adresse'));
 $u_htmlAdresseMail = htmlspecialchars($u->get('adresseMail'));
 $u_htmlPays = htmlspecialchars($u->get('pays'));
+$is_user=Session::is_user($u->get('login'));
 
 echo <<< EOT
     <p>
@@ -17,13 +18,15 @@ echo <<< EOT
         <br>
         Adresse : {$u_htmlAdresse}, {$u_htmlPays}
         <br>
-        <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
-            <button>Supprimer cet Utilisateur</button>
-        </a>
-        <br>
-        <a href="./index.php?controller=Utilisateur&action=update&login={$u_raw}">
-            <button>Mettre à jour l'utilisateur</button>
-        </a>
-    </p>
 EOT;
+        if ($is_user) {'
+            <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
+                <button>Supprimer cet Utilisateur</button>
+            </a>
+            <br>
+            <a href="./index.php?controller=Utilisateur&action=update&login={$u_raw}">
+                <button>Mettre à jour l\'utilisateur</button>
+            </a>';
+        }
+    echo'</p>';
 ?>
