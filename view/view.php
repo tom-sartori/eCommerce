@@ -4,22 +4,31 @@
         <link rel="stylesheet" href="./css/general.css">
         <meta charset="UTF-8">
         <title>
-            <?php echo $pagetitle; ?>
+            <?=$pagetitle?>
         </title>
-        <p style="border: 1px solid black;text-align:right;padding-right:1em;">
-        <?php 
-            if(isset($_SESSION["login"])){ echo " Bienvenue " . $_SESSION["login"] . " !   <a href=\"index.php?action=deconnect&controller=utilisateur\"> Déconnexion </a>" ; } 
-            else { echo " <a href=\"index.php?action=connect&controller=utilisateur\"> Connexion </a>" ;}
-        ?>
+        <p>
+            <?= (isset($_SESSION["login"]))?'
+                Bienvenue {$_SESSION["login"]} !   
+                <a href="index.php?action=deconnect&controller=utilisateur"> 
+                    Déconnexion 
+                </a>'
+                :'<a href="index.php?action=connect&controller=utilisateur"> 
+                    Connexion 
+                </a>'
+            ?>
         </p>
     </head>
 
     <body>
         <nav>
-            <p style=" border: 1px solid black;text-align: center ;padding-right:1em;">
-            <a href="index.php?controller=BouleDeNoel&action=readAll" > <strong>Liste des boules de noel</strong></a>
-            <a href="index.php?controller=Utilisateur&action=readAll"> <strong>Liste des utilisateurs</strong></a>
-            <a href="index.php?controller=Fournisseur&action=readAll"> <strong>Liste des Fournisseurs</strong></a>
+            <a href="index.php?controller=BouleDeNoel&action=readAll" >
+                <strong>Liste des boules de noel</strong></a>
+            <a href="index.php?controller=Utilisateur&action=readAll">
+                <strong>Liste des utilisateurs</strong>
+            </a>
+            <a href="index.php?controller=Fournisseur&action=readAll">
+                <strong>Liste des Fournisseurs</strong>
+            </a>
         </nav>
 
         <main>
@@ -31,15 +40,15 @@
 
         <footer>
             <?php
-            if($_GET['action']!='afficher'){
-            echo '
-            <a href="./index.php?controller=Utilisateur&action=afficher">
-                <button> <img src="images/panier.png" alt="panier" width="55" height="55"></button>
-            </a>';
-            }
+                if($_GET['action']!='afficher'){
+                    echo '
+                        <a href="./index.php?controller=Utilisateur&action=afficher">
+                            <button> <img src="images/panier.png" alt="panier" width="55" height="55"></button>
+                        </a>';
+                }
             ?>
             <h3>
-                Des boules pour tous
+                Des boules pour tous !
             </h3>
         </footer>
     </body>
