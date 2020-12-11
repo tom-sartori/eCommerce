@@ -195,7 +195,7 @@ class ControllerUtilisateur{
                   <title>Mail de confirmation</title>
                 </head>
                 <body>
-                  <a href="http://localhost/TD7/index.php?controller=utilisateur&action=validate&login=' . $login . '&nonce=' . $nonce . '"> Validez votre compte </a>
+                  <a href="http://localhost/eCommerce/index.php?controller=utilisateur&action=validate&login=' . $login . '&nonce=' . $nonce . '"> Validez votre compte </a>
                 </body>
                 
             </html>';
