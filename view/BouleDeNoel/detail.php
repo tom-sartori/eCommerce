@@ -7,6 +7,7 @@
     $b_htmlTaille = htmlspecialchars($b->get('taille'));
     $b_htmlMatiere = htmlspecialchars($b->get('matiere'));
     $b_htmlStocks = htmlspecialchars($b->get('stock'));
+    $b_htmlPrix = htmlspecialchars($b->get('prix'));
     $b_htmlFournisseur = htmlspecialchars($b->get('idFournisseur'));
 
     echo <<< EOT
@@ -22,6 +23,8 @@
             Matiere : {$b_htmlMatiere} 
             <br>
             Stocks : {$b_htmlStocks} 
+            <br>
+            prix : {$b_htmlPrix} €
             <br>
             Fournit  par : <a href="./index.php?controller=Fournisseur&action=read&idFournisseur={$b_rawFournisseur}"> 
                 {$b_htmlFournisseur} 

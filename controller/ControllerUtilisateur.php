@@ -63,6 +63,8 @@ class ControllerUtilisateur{
         $prenom="";
         $adresse="";
         $adresseMail="";
+        $password="";
+        $passwordConfirme="";
         $pays="";
         $mdp="";
         $pagetitle='Formulaire de création d\'un utilisateur';
@@ -87,7 +89,6 @@ class ControllerUtilisateur{
         else{
             self::connect();
         }
-
     }
 
         public static function created(){
@@ -116,8 +117,7 @@ class ControllerUtilisateur{
             $mdp="";
             $message="Les deux mots de passe ne correspondent pas ! ";
             require (File::build_path(Array("view","view.php")));
-        }
-        
+        }        
     }
 
     public static function updated(){
@@ -188,5 +188,20 @@ class ControllerUtilisateur{
         setcookie(session_name(),"", time()-1,"/" );
         self::readAll();
     }
+    public static function addPanier(){
+        ModelUtilisateur::addPanier($_GET['idBouleDeNoel']);
+        $tab_b = ModelBouleDeNoel::selectAll();
+        $controller = 'Utilisateur';
+        $view='addpanier';
+        $pagetitle='ajout au Panier';
+        require(File::build_path(Array("view","view.php")));
+    }
 
+    public static function afficher(){
+        $tab_panier= $_SESSION['panier'];
+        $controller = 'Utilisateur';
+        $view='panier';
+        $pagetitle='affichage du Panier';
+        require(File::build_path(Array("view","view.php")));
+    }
 }

@@ -30,6 +30,14 @@
         </main>
 
         <footer>
+            <?php
+            if($_GET['action']!='afficher'){
+            echo '
+            <a href="./index.php?controller=Utilisateur&action=afficher">
+                <button> <img src="images/panier.png" alt="panier" width="55" height="55"></button>
+            </a>';
+            }
+            ?>
             <h3>
                 Des boules pour tous
             </h3>
