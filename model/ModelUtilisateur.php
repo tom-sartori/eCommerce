@@ -49,9 +49,8 @@ class ModelUtilisateur extends Model{
     }
 
     public static function checkPassword($login,$mdphache){
-        $table_name= self::$nomTable;
         try{
-          $rep=Model::$pdo->query("SELECT mdp FROM $table_name WHERE login=\"" . $login . "\"" );
+          $rep=Model::$pdo->query("SELECT mdp FROM $nomTable WHERE login=\"" . $login . "\"" );
           //$rep->setFetchMode( PDO::FETCH_ASSOC);
           $tab = $rep->fetch(PDO::FETCH_ASSOC);
         }
@@ -72,7 +71,7 @@ class ModelUtilisateur extends Model{
 
   public static function is_admin($login){
         try{
-          $prep=Model::$pdo->prepare("SELECT admin FROM utilisateur WHERE login='$login'" );
+          $prep=Model::$pdo->prepare("SELECT admin FROM $nomTable WHERE login='$login'" );
           $prep->execute();
           //$rep->setFetchMode( PDO::FETCH_ASSOC);
           $tab = $prep->fetch(PDO::FETCH_ASSOC);
@@ -93,9 +92,8 @@ class ModelUtilisateur extends Model{
   }
 
   public static function verif($nonce,$login){
-        $table_name= static::$object;
         try{
-          $prep=Model::$pdo->prepare("SELECT nonce FROM $table_name WHERE login=\"" . $login . "\"" );
+          $prep=Model::$pdo->prepare("SELECT nonce FROM $nomTable WHERE login=\"" . $login . "\"" );
           $prep->execute();
           //$rep->setFetchMode( PDO::FETCH_ASSOC);
           $tab = $prep->fetch(PDO::FETCH_ASSOC);
@@ -117,7 +115,7 @@ class ModelUtilisateur extends Model{
 
   public static function verifierUser($login){
     try{
-        $prep=Model::$pdo->prepare("UPDATE utilisateur SET nonce=NULL WHERE login='$login'");
+        $prep=Model::$pdo->prepare("UPDATE $nomTable SET nonce=NULL WHERE login='$login'");
         $prep->execute();
     }
     catch( PDOException $e){
@@ -130,7 +128,7 @@ class ModelUtilisateur extends Model{
 
   public static function is_verif($login){
         try{
-          $prep=Model::$pdo->prepare("SELECT nonce FROM utilisateur WHERE login='$login'" );
+          $prep=Model::$pdo->prepare("SELECT nonce FROM $nomTable WHERE login='$login'" );
           $prep->execute();
           //$rep->setFetchMode( PDO::FETCH_ASSOC);
           $tab = $prep->fetch(PDO::FETCH_ASSOC);
