@@ -22,7 +22,7 @@
             <?=($update_b)?'<input type="number" name="idFournisseur" id="idFournisseur_id" value="' . $idFournisseur . '" readonly="readonly"' : '' //Si create, on affiche rien car l'id s'incrémenta automatiquement ?>
             <br>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
-            <input type="submit" value="Envoyer" />
+            <input class="envoyer" type="submit" value="Envoyer" />
         </p>
     </fieldset>
 </form>
