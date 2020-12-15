@@ -31,7 +31,7 @@
             <input type="number" name="idBouleDeNoel" id="idBouleDeNoel_id" value="<?= $idBouleDeNoel ?>" <?= ($update_b)?'readonly="readonly"':'required'?>/>
             <br>
             <input type="hidden" name="controller" value="<?= static::$object ?>"/>
-            <input type="submit" value="Envoyer" />
+            <input class="envoyer" type="submit" value="Envoyer" />
         </p>
     </fieldset>
 </form>

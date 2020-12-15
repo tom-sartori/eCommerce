@@ -4,7 +4,12 @@
 
 <form method="post" action="index.php?controller=<?= static::$object ?>&action=<?= ($update_b)?'updated':'created'?>"
     <fieldset>
-        <legend >Formulaire de création / mise à jour d'un utilisateur : </legend>
+        <legend>
+            <h3>
+                <?= ($update_b)?'Préférences utilisateur'
+                    :'Formulaire d\'inscription'?>
+            </h3>
+        </legend>
         <p>
             <label for="nom_id">Nom</label>
             <input type="text" name="nom" id="nom_id" value= "<?= $nom ?>" required/>
@@ -37,7 +42,7 @@
             <input type="password" name="mdpconfirm" id="mdpconfirm_id" value="<?= $mdp ?>" required>
             <br>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
-            <input type="submit" value="Envoyer" />
+            <input class="envoyer" type="submit" value="Envoyer" />
         </p>
     </fieldset>
 </form>
