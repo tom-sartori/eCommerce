@@ -188,6 +188,7 @@ class ControllerUtilisateur{
         setcookie(session_name(),"", time()-1,"/" );
         self::readAll();
     }
+
     public static function addPanier(){
         ModelUtilisateur::addPanier($_GET['idBouleDeNoel']);
         $tab_b = ModelBouleDeNoel::selectAll();
@@ -198,10 +199,29 @@ class ControllerUtilisateur{
     }
 
     public static function afficher(){
-        $tab_panier= $_SESSION['panier'];
         $controller = 'Utilisateur';
         $view='panier';
         $pagetitle='affichage du Panier';
         require(File::build_path(Array("view","view.php")));
     }
+    public static function viderPanier(){
+        $_SESSION['panier']=null;
+        $controller = 'Utilisateur';
+        $view='panierVide';
+        $pagetitle='Panier vidé';
+        require(File::build_path(Array("view","view.php")));
+    }
+
+    public static function acheterPanier(){
+        if(isset($_SESSION['$login'])){
+            ModelUtilisateur::valideCommande($_SESSION['$login']);
+            $controller = 'Utilisateur';
+            $view='panierAchete';
+            $pagetitle='Panier acheté';
+            require(File::build_path(Array("view","view.php")));
+        }else{
+            self::connect();
+        }
+    }
+
 }
