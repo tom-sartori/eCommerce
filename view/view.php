@@ -10,17 +10,21 @@
 
     <body>
         <p class="connexion">
-            <?= (isset($_SESSION["login"]))?'
-                    Bienvenue {$_SESSION["login"]} !   
+            <?php
+                if (isset($_SESSION["login"])) {
+                    echo 'Bienvenue ' . $_SESSION["login"] . ' !  
                     <a href="index.php?action=deconnect&controller=utilisateur"> 
                         Déconnexion 
-                    </a>'
-                :'<a href="./index.php?controller=Utilisateur&action=create">
+                    </a>';
+                }
+                else {
+                    echo '<a href="./index.php?controller=Utilisateur&action=create">
                         S\'inscrire | 
-                    </a>
-                    <a href="index.php?action=connect&controller=utilisateur"> 
-                        Connexion 
-                    </a>'
+                        </a>
+                        <a href="index.php?action=connect&controller=utilisateur"> 
+                            Connexion 
+                        </a>';
+                }
             ?>
         </p>
         <nav>

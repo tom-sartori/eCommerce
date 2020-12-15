@@ -6,7 +6,7 @@
     <fieldset>
         <legend>
             <h3>
-                <?= ($update_b)?'Préférences utilisateur'
+                <?= ($update_b)?'Mise à jour utilisateur'
                     :'Formulaire d\'inscription'?>
             </h3>
         </legend>

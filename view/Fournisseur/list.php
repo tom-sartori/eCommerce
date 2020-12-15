@@ -9,7 +9,6 @@
                 <a href="./index.php?controller=Fournisseur&action=read&idFournisseur={$f_raw}">
                     {$f_html}
                 </a> 
-                <br>
                 <a href="./index.php?controller=Fournisseur&action=delete&idFournisseur={$f_raw}">
                     <button>Supprimer ce fournisseur</button>
                 </a>
