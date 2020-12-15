@@ -11,7 +11,8 @@ class ControllerUtilisateur{
     public static function readAll() {
         $view='list';
         $pagetitle='Liste des utilisateurs';
-        $tab_u = ModelUtilisateur::selectAll();     //appel au modèle pour gerer la BD
+        $tab_u = ModelUtilisateur::selectAll();
+         //appel au modèle pour gerer la BD
         require (File::build_path(array("view","view.php")));
     }
   
@@ -42,11 +43,12 @@ class ControllerUtilisateur{
                     session_destroy();  
                     setcookie(session_name(),"", time()-1,"/" );
                 }
-            $tab_u = ModelUtilisateur::selectAll();
-            $view = 'deleted';
-            $pagetitle = 'Utilisateur supprimé';
+                $tab_u = ModelUtilisateur::selectAll();
+                $view = 'deleted';
+                $pagetitle = 'Utilisateur supprimé';
 
-            require_once(File::build_path(array("view", "view.php")));
+                require_once(File::build_path(array("view", "view.php")));
+            }
         }
         else{
             self::connect();
@@ -94,7 +96,7 @@ class ControllerUtilisateur{
     }
 
         public static function created(){
-            if($_POST["mdp"]==$_POST["mdpconfirm"] && filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
+            if($_POST["mdp"]==$_POST["mdpconfirm"] && filter_var($_POST['adresseMail'],FILTER_VALIDATE_EMAIL)){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
                 $nonce= Security::generateRandomHex();
                 if(!(isset($_POST['admin'])))
@@ -183,9 +185,9 @@ class ControllerUtilisateur{
         self::readAll();
     }
 
-    public static function mailUser($login,$none,$mail){
+    public static function mailUser($login,$nonce,$mail){
         $login= rawurlencode($login);
-        $nonce= rawurlencode($none);
+        $nonce= rawurlencode($nonce);
         $texte='<!doctype html>
             <html >
                 <head>
@@ -193,7 +195,7 @@ class ControllerUtilisateur{
                   <title>Mail de confirmation</title>
                 </head>
                 <body>
-                  <a href="http://localhost/TD7/index.php?controller=utilisateur&action=validate&login=' . $l . '&nonce=' . $n . '"> Validez votre compte </a>
+                  <a href="http://localhost/eCommerce/index.php?controller=utilisateur&action=validate&login=' . $login . '&nonce=' . $nonce . '"> Validez votre compte </a>
                 </body>
                 
             </html>';

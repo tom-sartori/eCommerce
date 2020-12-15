@@ -15,7 +15,7 @@ EOT;
             if ($is_user) {
                 echo '
                     <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
-                        <button>Supprimer cet Uuuuutilisateur</button>
+                        <button>Supprimer cet Utilisateur</button>
                     </a>';
             }
         echo '</p>';
