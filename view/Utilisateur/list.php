@@ -1,17 +1,17 @@
 <?php
-
+echo '<h1> Liste des utilisateurs de la base de données : </h1> <br> <ul>';
 foreach ($tab_u as $u) {
     $u_raw = rawurlencode($u->get('login'));
     $is_user=Session::is_user($u->get('login'));
     $is_admin=Session::is_admin($u->get('login'));
     $u_html = htmlspecialchars($u->get('login'));
     echo <<< EOT
-        <p>
+        <li>
             Utilisateur de login : 
             <a href="./index.php?controller=Utilisateur&action=read&login={$u_raw}">
                 {$u_html}
             </a>
-            <br>
+            
 EOT;
             if ($is_user || $is_admin) {
                 echo '
@@ -19,10 +19,10 @@ EOT;
                         <button>Supprimer cet Utilisateur</button>
                     </a>';
             }
-        echo '</p>';
+        echo '</li><br>';
 }
 
-echo '<a href="./index.php?controller=Utilisateur&action=create">
+echo '</ul><a href="./index.php?controller=Utilisateur&action=create">
         <button>Ajouter un utilisateur</button>
         </a>';
 ?>

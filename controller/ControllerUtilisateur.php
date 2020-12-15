@@ -199,7 +199,15 @@ class ControllerUtilisateur{
                 </body>
                 
             </html>';
-        mail($mail, "..........." , $texte);
+        mail($mail, "Validation de compte !" , $texte);
+    }
+
+    public static function mailAchat($login){
+        $u= ModelUtilisateur::select($login);
+        $mail= $u->get("email");
+        $texte= " Votre commande a bien été reçu par nos services et sera envoyé sous peu !
+        Merci d'avoir fait confiance à Des boules pour tous ! ";
+        mail($mail,"Confirmation d'achats !" , $texte);
     }
 
     public static function connect(){
@@ -241,11 +249,11 @@ class ControllerUtilisateur{
         $tab_b = ModelBouleDeNoel::selectAll();
         $controller = 'Utilisateur';
         $view='addpanier';
-        $pagetitle='ajout au Panier';
+        $pagetitle='Ajout au Panier';
         require(File::build_path(Array("view","view.php")));
     }
 
-    public static function afficher(){
+    public static function afficherPanier(){
         $controller = 'Utilisateur';
         $view='panier';
         $pagetitle='affichage du Panier';
@@ -260,13 +268,14 @@ class ControllerUtilisateur{
     }
 
     public static function acheterPanier(){
-        if(isset($_SESSION['$login'])){
-            ModelUtilisateur::valideCommande($_SESSION['$login']);
+        if(isset($_SESSION['login'])){
+            ModelUtilisateur::valideCommande($_SESSION['login']);
             $controller = 'Utilisateur';
             $view='panierAchete';
             $pagetitle='Panier acheté';
             require(File::build_path(Array("view","view.php")));
         }else{
+            echo $_SESSION['login'];
             self::connect();
         }
     }
