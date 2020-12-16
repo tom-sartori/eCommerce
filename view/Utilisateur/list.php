@@ -1,7 +1,8 @@
 <?php
-    echo '<h1> Liste des utilisateurs de la base de données : </h1> <br> <ul>';
+    echo '<h1> Liste des utilisateurs de la base de données : </h1>';
     if(isset($message))
         echo $message;
+    echo'<ul>';
     foreach ($tab_u as $u) {
         $u_raw = rawurlencode($u->get('login'));
         $is_user=Session::is_user($u->get('login'));

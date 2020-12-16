@@ -13,7 +13,7 @@ if (isset($_GET['controller'])) {
                 $controllerClass::$action();
             } 
             else {
-                ControllerBouleDeNoel::error();
+                $controllerClass::error();
             }
         }
         else {
