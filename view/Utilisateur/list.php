@@ -1,9 +1,11 @@
 <?php
     echo '<h1> Liste des utilisateurs de la base de données : </h1> <br> <ul>';
+    if(isset($message))
+        echo $message;
     foreach ($tab_u as $u) {
         $u_raw = rawurlencode($u->get('login'));
         $is_user=Session::is_user($u->get('login'));
-        $is_admin=Session::is_admin($u->get('login'));
+        $is_admin=Session::is_admin();
         $u_html = htmlspecialchars($u->get('login'));
         echo <<< EOT
             <li>

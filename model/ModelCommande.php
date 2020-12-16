@@ -38,7 +38,7 @@ class ModelCommande extends Model {
             $tabCommande = self::nbCommande();
             foreach($tabCommande as $key => $value){
                 foreach ($value as $key1=> $value1) {
-                    $nbCommande = $value1;
+                    $nbCommande = $value1 + 1 ;
                 }
             }
             $panier=array_count_values($_SESSION['panier']);
@@ -59,6 +59,7 @@ class ModelCommande extends Model {
                 echo $e->getMessage();
             }
             else{
+                echo " salut ";
                 echo 'une erreur est survenue';
             }
             die();

@@ -3,6 +3,9 @@
         <h1> 
             Liste des boules de Noël de la base de données : 
         </h1> ';
+    if(isset($message)){
+        echo $message;
+    }
     echo '<ul>';
 
     foreach ($tab_b as $b) {

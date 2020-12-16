@@ -1,4 +1,7 @@
 <?php
+    echo '<h1> Votre panier : </h1>';
+    if(isset($message))
+        echo $message;
     if(isset($_SESSION['panier'])) {
         $somme = 0;
         $panier=array_count_values($_SESSION['panier']);

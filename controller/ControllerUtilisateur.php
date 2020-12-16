@@ -216,7 +216,7 @@ class ControllerUtilisateur{
 
     public static function mailAchat($login){
         $u= ModelUtilisateur::select($login);
-        $mail= $u->get("email");
+        $mail= $u->get("adresseMail");
         $texte= " Votre commande a bien été reçue par nos services et sera envoyée sous peu !
         Merci d'avoir fait confiance à Des boules pour tous ! ";
         mail($mail,"Confirmation d'achats !" , $texte);
