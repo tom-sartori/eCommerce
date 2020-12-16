@@ -9,6 +9,8 @@
     $b_htmlStocks = htmlspecialchars($b->get('stock'));
     $b_htmlPrix = htmlspecialchars($b->get('prix'));
     $b_htmlFournisseur = htmlspecialchars($b->get('idFournisseur'));
+    $f = ModelFournisseur::select($b->get('idFournisseur'));
+    $b_htmlFNom = htmlspecialchars($f->get('nom'));
 
     echo <<< EOT
         <p> 
@@ -25,10 +27,14 @@
             Stocks : {$b_htmlStocks} 
             <br>
             prix : {$b_htmlPrix} €
+
+EOT;
+    if (Session::is_admin()) {
+        echo <<< EOT
             <br>
             Fournit  par : <a href="./index.php?controller=Fournisseur&action=read&idFournisseur={$b_rawFournisseur}"> 
-                {$b_htmlFournisseur} 
-            </a>
+                {$b_htmlFNom} 
+            </a>. 
             <br>
             <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
                 <button>Supprimer cette boule de noël. </button>
@@ -39,5 +45,12 @@
             </a>
         </p>
 EOT;
+    }
+    else {
+        echo'
+            <p>
+                Fournit  par ' . $b_htmlFNom . '. 
+            </p>';
+    }
 
 ?>

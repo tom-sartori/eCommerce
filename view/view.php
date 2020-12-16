@@ -18,7 +18,8 @@
                     </a>';
                 }
                 else {
-                    echo '<a href="./index.php?controller=Utilisateur&action=create">
+                    echo '
+                        <a href="./index.php?controller=Utilisateur&action=create">
                         S\'inscrire | 
                         </a>
                         <a href="index.php?action=connect&controller=utilisateur"> 
@@ -29,13 +30,21 @@
         </p>
         <nav>
                 <a href="index.php?controller=BouleDeNoel&action=readAll" >
-                    <strong>Liste des boules de noel</strong></a>
-                <a id="navMid" href="index.php?controller=Utilisateur&action=readAll">
-                    <strong>Liste des utilisateurs</strong>
+                    <strong>Liste des boules de noel</strong>
                 </a>
-                <a href="index.php?controller=Fournisseur&action=readAll">
-                    <strong>Liste des Fournisseurs</strong>
-                </a>
+
+                <?php
+                    if (Session::is_admin()) {
+                        echo '
+                            <a id="navMid" href="index.php?controller=Utilisateur&action=readAll">
+                                <strong>Liste des utilisateurs</strong>
+                            </a>
+         
+                            <a href="index.php?controller=Fournisseur&action=readAll">
+                                <strong>Liste des Fournisseurs</strong>
+                            </a>';
+                   }
+                ?>
         </nav>
 
         <main>

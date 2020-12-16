@@ -10,19 +10,24 @@
                 <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$b_raw}">
                     {$b_spe}
                 </a> 
+                <a href="./index.php?controller=Utilisateur&action=addPanier&idBouleDeNoel={$b_raw}">
+                    <button>Ajouter au panier</button>
+                </a>
+EOT;
+        if (Session::is_admin())
+            echo <<< EOT
                 <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
                     <button>Supprimer cette boule de noël</button>
                 </a> 
-                <a href="./index.php?controller=Utilisateur&action=addPanier&idBouleDeNoel={$b_raw}">
-                    <button>Ajout au panier</button>
-                </a>
-            </p>
-    EOT;
-        }
+EOT;
+            echo '</p>';
+    }
 
-    echo <<< EOT
-        <a href="./index.php?controller=BouleDeNoel&action=create">
-            <button>Ajouter une boule de noël</button>
-        </a>
-    EOT;
+    if (Session::is_admin())
+        echo <<< EOT
+            <a href="./index.php?controller=BouleDeNoel&action=create">
+                <button>Ajouter une boule de noël</button>
+            </a>
+EOT;
+
 ?>
