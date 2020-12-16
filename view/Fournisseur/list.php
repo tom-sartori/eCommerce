@@ -1,6 +1,8 @@
 <?php
 
     echo '<h1> Liste des fournisseurs de la base de données : </h1> <br> <ul>';
+    if(isset($message))
+        echo $message;
     foreach ($tab_f as $f) {
         $f_raw = rawurlencode($f->get('idFournisseur'));
         $f_html = htmlspecialchars($f->get('idFournisseur'));
