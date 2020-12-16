@@ -25,7 +25,7 @@ EOT;
 
     echo <<< EOT
         </ul> 
-        <a href="./index.php?controller=Fournisseur&action=create">
+        <a class="bAjout" href="./index.php?controller=Fournisseur&action=create">
             <button>Ajouter un fournisseur</button>
         </a>
 EOT;

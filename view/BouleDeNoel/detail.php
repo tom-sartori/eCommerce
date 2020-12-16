@@ -35,8 +35,8 @@
             <p>
                 prix : {$b_htmlPrix} €
             </p>
+    EOT;
 
-EOT;
     if (Session::is_admin()) {
         echo <<< EOT
             <p>
@@ -53,7 +53,7 @@ EOT;
               </a>
             </p>
         </p>
-EOT;
+        EOT;
     }
     else {
         echo'

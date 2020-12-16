@@ -30,12 +30,13 @@ EOT;
                     <button>Supprimer cette boule de noël</button>
                 </a> 
 EOT;
-        echo '</p></li>';
+        echo '</p>
+            </li>';
     }
 
     if (Session::is_admin())
-        echo '
-            <a href="./index.php?controller=BouleDeNoel&action=create">
+        echo '</ul>
+            <a class="bAjout" href="./index.php?controller=BouleDeNoel&action=create">
                 <button>Ajouter une boule de noël</button>
             </a>';
 ?>

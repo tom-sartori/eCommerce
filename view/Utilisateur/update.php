@@ -48,18 +48,21 @@
                 <input type="password" name="mdpconfirm" id="mdpconfirm_id" value="<?= $mdp ?>" required>
             </p>
             <?php 
-              if(Session::is_admin()){ echo '
-                <p> 
-                  <div>
-                    <label for="admin_id">Est administrateur ?</label>
-                    <input type="checkbox" name="admin" value="1" default="0" id="admin_id"'; 
-                    if(Session::is_admin() && $login==$_SESSION['login'])
-                      {echo' checked ';}
-                     echo' >
-                  </div>
-                </p> ';} ?>
+                if(Session::is_admin()){
+                    echo '
+                        <p> 
+                            <div>
+                                <label for="admin_id">Est administrateur ?</label>
+                                <input type="checkbox" name="admin" value="1" default="0" id="admin_id"';
+                                if(Session::is_admin() && $login==$_SESSION['login'])
+                                    echo' checked ';
+                                echo' >
+                            </div>
+                        </p> ';
+                }
+            ?>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
             <input class="envoyer" type="submit" value="Envoyer" />
-        </p>
+            </p>
     </fieldset>
 </form>
