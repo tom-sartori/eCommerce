@@ -194,7 +194,7 @@ class ControllerUtilisateur{
     public static function validate() {
         if(ModelUtilisateur::select($_GET['login']) && ModelUtilisateur::verif($_GET['nonce'],$_GET['login']))
             ModelUtilisateur::verifierUser($_GET['login']);
-        self::readAll();
+        ControllerBouleDeNoel::readAll();
     }
 
     public static function mailUser($login,$nonce,$mail){

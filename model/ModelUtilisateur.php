@@ -99,13 +99,7 @@ class ModelUtilisateur extends Model{
           $tab = $prep->fetch(PDO::FETCH_ASSOC);
         }
         catch(PDOException $e){
-          if(Conf::getDebug()){
-            echo $e->getMessage();
-          }
-          else{
-            echo "Une erreur est survenue";
-          }
-          die();
+          return false;
         }
         if(isset($tab["nonce"]))
             return $tab["nonce"]==$nonce;

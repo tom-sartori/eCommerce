@@ -47,17 +47,21 @@ class Model{
         $primary_key = static::$primary;
         $sql = "SELECT * from " . $table_name . " WHERE " . $primary_key . "=:nom_tag";
         // Préparation de la requête
-        $req_prep = Model::$pdo->prepare($sql);
+        try{
+            $req_prep = Model::$pdo->prepare($sql);
 
-        $values = array(
-            "nom_tag" => $primary_value,
-        );
-        $req_prep->execute($values);
-
-        // On récupère les résultats comme précédemment
-        $req_prep->setFetchMode(PDO::FETCH_CLASS, $class_name);
-        $tab_gen = $req_prep->fetchAll();
-        // Attention, si il n'y a pas de résultats, on renvoie false
+            $values = array(
+                "nom_tag" => $primary_value,
+            );
+            $req_prep->execute($values);
+             // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, $class_name);
+            $tab_gen = $req_prep->fetchAll();
+            // Attention, si il n'y a pas de résultats, on renvoie false
+        }
+        catch (PDOException $e) {
+            return false;
+        }
         if (empty($tab_gen))
             return false;
         return $tab_gen[0];
@@ -77,7 +81,6 @@ class Model{
             );
             $req_prep->execute($value);
         } catch (PDOException $e) {
-            echo $e->getMessage();
             return 0;
         }
         return 1;
@@ -99,8 +102,6 @@ class Model{
             );
             $req_prep->execute($value);
         } catch (PDOException $e) {
-            echo " La mise à jour dans la base a rencontré cette erreur : <br>";
-            echo "{$e->getMessage()} <br><br>";
             return 0;
         }
         return 1;
@@ -121,8 +122,6 @@ class Model{
             $prep = Model::$pdo->prepare($sql);
             $prep->execute();
         } catch (PDOException $e) {
-            echo "L'insertion dans la base de données a rencontré cette erreur : <br> ";
-            echo "{$e->getMessage()} <br><br>";
             return 0;
         }
         return 1;
