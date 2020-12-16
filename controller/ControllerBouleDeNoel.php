@@ -16,10 +16,8 @@ class ControllerBouleDeNoel{
     public static function read(){
         $idBouleDeNoel = $_GET['idBouleDeNoel'];
         $b = ModelBouleDeNoel::select($idBouleDeNoel);
-        if($b==null){
-            $view='error';
-            $pagetitle='Erreur BouleDeNoel';
-            require (File::build_path(array("view","view.php")));
+        if($b == false){
+            self::error();
         }
         else {
             $view = 'detail';
@@ -93,11 +91,9 @@ class ControllerBouleDeNoel{
     public static function created(){
         if (Session::is_admin()) {
             $data = array('nom' => $_POST["nom"], 'couleur' => $_POST["couleur"], 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"], 'idFournisseur' => $_POST["idFournisseur"], 'prix' => $_POST["prix"], 'stock' => $_POST["stock"], 'idBouleDeNoel' => $_POST["idBouleDeNoel"]);
-            $erreur = ModelBouleDeNoel::save($data);
-            if ($erreur == 0) {
-                $view = 'error';
-                $pagetitle = 'Erreur création boule de Noël';
-            } else {
+            if (ModelBouleDeNoel::save($data) == 0)
+                self::error();
+            else {
                 $tab_b = ModelBouleDeNoel::selectAll();
                 $view = 'created';
                 $pagetitle = 'Validation création de la boule de Noël';
@@ -112,11 +108,9 @@ class ControllerBouleDeNoel{
         if (Session::is_admin()) {
             $data = array('nom' => $_POST["nom"], 'couleur' => $_POST["couleur"], 'taille' => $_POST["taille"], 'matiere' => $_POST["matiere"], 'idFournisseur' => $_POST["idFournisseur"], 'prix' => $_POST["prix"], 'stock' => $_POST["stock"]);
             $i = $_POST['idBouleDeNoel'];
-            $erreur = ModelBouleDeNoel::update($data, $i);
-            if ($erreur == 0) {
-                $view = 'error';
-                $pagetitle = 'Erreur mise à jour boule de Noël';
-            } else {
+            if (ModelBouleDeNoel::update($data, $i) == 0)
+                self::error();
+            else {
                 $tab_b = ModelBouleDeNoel::selectAll();
                 $view = 'updated';
                 $pagetitle = 'Validation mise à jour de la boule de Noël';

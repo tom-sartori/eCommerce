@@ -23,11 +23,9 @@ class ControllerFournisseur{
           if (Session::is_admin()) {
               $idFournisseur = $_GET['idFournisseur'];
               $f = ModelFournisseur::select($idFournisseur);
-              if ($f == null) {
-                  $view = 'errorid';
-                  $pagetitle = 'Erreur fournisseur';
-                  require(File::build_path(array("view", "view.php")));
-              } else {
+              if ($f == false)
+                  self::error();
+              else {
                   $controller = 'Fournisseur';
                   $view = 'detail';
                   $pagetitle = 'Details Fournisseur';
@@ -97,12 +95,9 @@ class ControllerFournisseur{
         public static function created(){
             if (Session::is_admin()) {
                 $data = array('nom' => $_POST["nom"], 'adresse' => $_POST["adresse"], 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"], 'idFournisseur' => $_POST["idFournisseur"]);
-                $erreur = ModelFournisseur::save($data);
-                if ($erreur == 0) {
-                    $view = 'error';
-                    $pagetitle = 'Erreru création fournisseur';
-                    require(File::build_path(array("view", "view.php")));
-                } else {
+                if (ModelFournisseur::save($data) == 0)
+                    self::error();
+                else {
                     $tab_f = ModelFournisseur::selectAll();
                     $view = 'created';
                     $pagetitle = 'Validation création du fournisseur';
@@ -117,12 +112,9 @@ class ControllerFournisseur{
         if (Session::is_admin()) {
             $data = array('nom' => $_POST["nom"], 'adresse' => $_POST["adresse"], 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
             $i = $_POST['idFournisseur'];
-            $erreur = ModelFournisseur::update($data, $i);
-            if ($erreur == 0) {
-                $view = 'error';
-                $pagetitle = 'Erreur création fournisseur';
-                require(File::build_path(array("view", "view.php")));
-            } else {
+            if (ModelFournisseur::update($data, $i) == 0)
+                self::error();
+            else {
                 $tab_f = ModelFournisseur::selectAll();
                 $view = 'updated';
                 $pagetitle = 'Validation mise à jour Fournisseur';
