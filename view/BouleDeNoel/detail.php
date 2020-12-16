@@ -9,10 +9,12 @@
     $b_htmlStocks = htmlspecialchars($b->get('stock'));
     $b_htmlPrix = htmlspecialchars($b->get('prix'));
     $b_htmlFournisseur = htmlspecialchars($b->get('idFournisseur'));
+    $f = ModelFournisseur::select($b->get('idFournisseur'));
+    $b_htmlFNom = htmlspecialchars($f->get('nom'));
 
     echo <<< EOT
         <p> 
-            <p>
+        <p>
                 Numéro de série : {$b_htmlIdBouleDeNoel} 
             </p>
             <p>
@@ -33,20 +35,31 @@
             <p>
                 prix : {$b_htmlPrix} €
             </p>
+
+EOT;
+    if (Session::is_admin()) {
+        echo <<< EOT
             <p>
-                Fournit  par : <a href="./index.php?controller=Fournisseur&action=read&idFournisseur={$b_rawFournisseur}"> 
-                {$b_htmlFournisseur} 
-            </a>
+            Fournit  par : <a href="./index.php?controller=Fournisseur&action=read&idFournisseur={$b_rawFournisseur}"> 
+                {$b_htmlFNom} 
+            </a>. 
             </p>
             <p>
-                <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
-                    <button>Supprimer cette boule de noël. </button>
-                </a>
-                <a href="./index.php?controller=BouleDeNoel&action=update&idBouleDeNoel={$b_raw}">
-                    <button>Mettre à jour la boule de noël. </button>
-                </a>
+              <a href="./index.php?controller=BouleDeNoel&action=delete&idBouleDeNoel={$b_raw}">
+                  <button>Supprimer cette boule de noël. </button>
+              </a>            
+              <a href="./index.php?controller=BouleDeNoel&action=update&idBouleDeNoel={$b_raw}">
+                  <button>Mettre à jour la boule de noël. </button>
+              </a>
             </p>
         </p>
 EOT;
+    }
+    else {
+        echo'
+            <p>
+                Fournit  par ' . $b_htmlFNom . '. 
+            </p>';
+    }
 
 ?>
