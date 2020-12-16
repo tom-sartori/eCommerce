@@ -11,13 +11,13 @@
                     <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$key}">
                         {$key}
                     </a> 
-                    dans votre panier. Cliquez dessus pour avoir plus de détails.
+                    dans votre panier. 
                 </p>        
 EOT;
         }
         echo <<< EOT
             <p>
-                Le prix total du panier est ' . {$somme} €. 
+                Le prix total du panier est de {$somme} €. 
             </p>
             <p>
                 <a href="./index.php?controller=Utilisateur&action=viderPanier">
