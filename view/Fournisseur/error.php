@@ -1,1 +1,1 @@
-<p> ⠨⠇⠑⠎ ⠋⠇⠊⠉⠎ ⠎⠕⠝⠞ ⠙⠑⠎ ⠛⠗⠕⠎⠎⠑⠎ ⠍⠑⠗⠙⠑⠎ Une erreur est survenue. ⠨⠇⠑⠎ ⠋⠇⠊⠉⠎ ⠎⠕⠝⠞ ⠙⠑⠎ ⠛⠗⠕⠎⠎⠑⠎ ⠍⠑⠗⠙⠑⠎ </p>
+<p> Une erreur est survenue. </p>
