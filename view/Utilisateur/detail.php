@@ -23,7 +23,7 @@
             <p>
                 Adresse : {$u_htmlAdresse}, {$u_htmlPays}
             </p>
-    EOT;
+EOT;
 
     if ($is_user || $is_admin) {
         echo <<< EOT
@@ -37,7 +37,7 @@
                 <button>Mettre à jour l\'utilisateur</button>
             </a>
         </p>
-        EOT;
+EOT;
     }
 
     echo'</p>';

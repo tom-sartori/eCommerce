@@ -17,7 +17,7 @@
                     </a> 
                     dans votre panier. 
                 </p>        
-            EOT;
+EOT;
         }
         echo <<< EOT
             <p>
@@ -31,7 +31,7 @@
                     <button>Acheter les articles</button>
                 </a>
             </p>
-        EOT;
+EOT;
     }
     else
         echo '
