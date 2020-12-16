@@ -275,7 +275,6 @@ class ControllerUtilisateur{
             $pagetitle='Panier acheté';
             require(File::build_path(Array("view","view.php")));
         }else{
-            echo $_SESSION['login'];
             self::connect();
         }
     }

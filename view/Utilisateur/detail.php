@@ -10,23 +10,29 @@ $is_user=Session::is_user($u->get('login'));
 
 echo <<< EOT
     <p>
-        Utilisateur : {$u_htmlLogin}
-        <br>
-        L'utilisateur s'appelle : {$u_htmlNom} {$u_htmlPrenom}
-        <br>
-        Adresse mail : {$u_htmlAdresseMail}
-        <br>
-        Adresse : {$u_htmlAdresse}, {$u_htmlPays}
-        <br>
+        <p>
+            Utilisateur : {$u_htmlLogin}
+        </p>
+        <p>
+            L'utilisateur s'appelle : {$u_htmlNom} {$u_htmlPrenom}
+        </p>
+        <p>
+            Adresse mail : {$u_htmlAdresseMail}
+        </p>
+        <p>
+            Adresse : {$u_htmlAdresse}, {$u_htmlPays}
+        </p>
 EOT;
         if ($is_user) {'
-            <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
-                <button>Supprimer cet Utilisateur</button>
-            </a>
-            <br>
-            <a href="./index.php?controller=Utilisateur&action=update&login={$u_raw}">
-                <button>Mettre à jour l\'utilisateur</button>
-            </a>';
+            <p>
+                <a href="./index.php?controller=Utilisateur&action=delete&login={$u_raw}">
+                    <button>Supprimer cet Utilisateur</button>
+                </a>
+            </p>
+            <p>
+                <a href="./index.php?controller=Utilisateur&action=update&login={$u_raw}">
+                    <button>Mettre à jour l\'utilisateur</button>
+                </a></p>';
         }
     echo'</p>';
 ?>
