@@ -1,6 +1,7 @@
 <?php
     echo'<h1>Voici vos commandes : </h1>';
     $memoire=0;
+
     foreach ($tab_c as $c){
         $c_htmllogin = htmlspecialchars($c->get('login'));
         $c_htmlIdBouleDeNoel = htmlspecialchars($c->get('idBouleDeNoel'));

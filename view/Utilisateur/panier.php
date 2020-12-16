@@ -5,6 +5,7 @@
         foreach ($panier as $key => $value) {
             $b = ModelBouleDeNoel::select($key);
             $somme = $somme + ($value * htmlspecialchars($b->get('prix')));
+
             echo <<< EOT
                 <p>
                     Vous avez {$value} boules de noël d'identifiant 
@@ -13,7 +14,7 @@
                     </a> 
                     dans votre panier. 
                 </p>        
-EOT;
+            EOT;
         }
         echo <<< EOT
             <p>
@@ -27,8 +28,9 @@ EOT;
                     <button>Acheter les articles</button>
                 </a>
             </p>
-EOT;
-    } else
+        EOT;
+    }
+    else
         echo '
             <p> 
                 Votre panier est vide. Veuillez acheter un maximum de boules pour passer un joyeux Noël ! 

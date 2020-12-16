@@ -43,7 +43,7 @@ class ControllerUtilisateur{
   
       public static function delete() {
         $login=rawurldecode("{$_GET["login"]}");
-        if(Session::is_user($login) || Session::is_admin($login)){
+        if(Session::is_user($login) || Session::is_admin()){
             if(ModelUtilisateur::delete($login)==0)
                 self::error();
             else{
@@ -148,7 +148,7 @@ class ControllerUtilisateur{
     }
 
     public static function updated(){
-        if(Session::is_user($_POST["login"]) || Session::is_admin($_POST["login"])){
+        if(Session::is_user($_POST["login"]) || Session::is_admin()){
             if($_POST["mdp"]==$_POST["mdpconfirm"]  && filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) ){
                 $mdpcrypte= Security::hacher($_POST["mdp"]);
                 if(!(isset($_POST['admin'])))

@@ -4,7 +4,7 @@
 
 <form method="post" action="index.php?controller=<?= static::$object ?>&action=<?= ($update_b)?'updated':'created'?>"
     <fieldset>
-        <legend > Formulaire de création / mise à jour d'un fournisseur : </legend>
+        <legend> Formulaire de <?=($update_b)?'mise à jour d\'un fournisseur':'création d\'un fournisseur'?> : </legend>
         <p>
             <p>
                 <label for="nom_id">Nom</label>
@@ -24,7 +24,7 @@
             </p>
             <p>
             <?=($update_b)?'<label for="idFournisseur_id">Identifiant fournisseur</label>': ''?>
-            <?=($update_b)?'<input type="number" name="idFournisseur" id="idFournisseur_id" value="' . $idFournisseur . '" readonly="readonly"' : '' //Si create, on affiche rien car l'id s'incrémenta automatiquement ?>
+            <?=($update_b)?'<input type="number" name="idFournisseur" id="idFournisseur_id" value="' . $idFournisseur . '" readonly="readonly"' : '' //Si create, on affiche rien car l'id s'incrémentera automatiquement ?>
             </p>
             <input type="hidden" name="controller" value="<?= static::$object ?>" />
             <input class="envoyer" type="submit" value="Envoyer" />
