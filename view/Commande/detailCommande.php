@@ -8,12 +8,16 @@
         $c_htmlidCommande = htmlspecialchars($c->get('idCommande'));
         $c_htmldateAchat = htmlspecialchars($c->get('dateAchat'));
         $c_htmlquantite = htmlspecialchars($c->get('quantite'));
+        $c_raw = rawurlencode($c->get('idBouleDeNoel'));
 
         if($memoire == $c_htmlidCommande)
             echo <<< EOT
                     <li>
                         <p>
-                            {$c_htmlquantite} boules de noel d'identifiant {$c_htmlIdBouleDeNoel} 
+                            {$c_htmlquantite} boules de noel d'identifiant 
+                            <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$c_raw}">
+                                {$c_htmlIdBouleDeNoel}
+                            </a> 
                         </p>
                     </li>
 EOT;
@@ -30,7 +34,10 @@ EOT;
                     <ul>
                         <li>
                             <p>
-                                {$c_htmlquantite} boules de noel d'identifiant {$c_htmlIdBouleDeNoel}
+                                {$c_htmlquantite} boules de noel d'identifiant 
+                                <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$c_raw}">
+                                    {$c_htmlIdBouleDeNoel}
+                                </a> 
                             </p>
                         </li>
 EOT;
