@@ -58,21 +58,6 @@ nav {
     margin-right: 12%;
 }
 
-nav div{
-    /*
-    padding-left: 15%;
-    margin-left: 8%;
-    margin-right: 8%;
-
-     */
-
-}
-nav a {
-}
-
-nav a:hover{
-}
-
 a {
     text-decoration: none;
     color: #dd1e1e;
@@ -87,6 +72,7 @@ footer h3 {
     text-align:right;
     padding-right:1em;
     margin-top : 10px;
+    background-color: lightgreen;
 }
 
 /*panier*/

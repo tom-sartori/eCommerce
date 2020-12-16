@@ -9,26 +9,35 @@ class ControllerUtilisateur{
   
   
     public static function readAll() {
-        $view='list';
-        $pagetitle='Liste des utilisateurs';
-        $tab_u = ModelUtilisateur::selectAll();
-         //appel au modèle pour gerer la BD
-        require (File::build_path(array("view","view.php")));
+        if (Session::is_admin()) {
+            $view = 'list';
+            $pagetitle = 'Liste des utilisateurs';
+            $tab_u = ModelUtilisateur::selectAll();
+            //appel au modèle pour gerer la BD
+            require(File::build_path(array("view", "view.php")));
+        }
+        else
+            self::error();
     }
   
   
      public static function read(){
-        $login = $_GET['login'];
-        $u=ModelUtilisateur::select($login);
-        if($u==false){
-            $view='errorlogin';
-            $pagetitle='Erreur utilisateur';
-            require (File::build_path(array("view","view.php")));
-        }else {
-            $view = 'detail';
-            $pagetitle = 'Details utilisateur';
-            require(File::build_path(array("view", "view.php")));
-        }
+         if (Session::is_admin()) {
+
+             $login = $_GET['login'];
+             $u = ModelUtilisateur::select($login);
+             if ($u == false) {
+                 $view = 'errorlogin';
+                 $pagetitle = 'Erreur utilisateur';
+                 require(File::build_path(array("view", "view.php")));
+             } else {
+                 $view = 'detail';
+                 $pagetitle = 'Details utilisateur';
+                 require(File::build_path(array("view", "view.php")));
+             }
+         }
+         else
+             self::error();
     }
  
   
@@ -56,28 +65,31 @@ class ControllerUtilisateur{
     }
 
     public static function error(){
-    
         $view='error';
         $pagetitle='Page d\'erreur ';
         require(File::build_path(Array("view","view.php")));
     }
 
     public static function create(){
-        $view='update';
-        $login="";
-        $nom="";
-        $prenom="";
-        $adresse="";
-        $adresseMail="";
-        $pays="";
-        $mdp="";
-        $pagetitle='Formulaire de création d\'un utilisateur';
-        require (File::build_path(Array("view","view.php")));
+        if (Session::is_admin()) {
+            $view = 'update';
+            $login = "";
+            $nom = "";
+            $prenom = "";
+            $adresse = "";
+            $adresseMail = "";
+            $pays = "";
+            $mdp = "";
+            $pagetitle = 'Formulaire de création d\'un utilisateur';
+            require(File::build_path(array("view", "view.php")));
+        }
+        else
+            self::error();
     }
 
     public static function update(){
         $login= htmlspecialchars("" . $_GET["login"]);
-        if(Session::is_user($login) || Session::is_admin($login)){
+        if(Session::is_user($login) || Session::is_admin()){
             $u = ModelUtilisateur::select($login);
             $nom=htmlspecialchars("{$u->get('nom')}") ;
             $prenom=htmlspecialchars("{$u->get('prenom')}") ;
@@ -199,7 +211,15 @@ class ControllerUtilisateur{
                 </body>
                 
             </html>';
-        mail($mail, "..........." , $texte);
+        mail($mail, "Validation de compte !" , $texte);
+    }
+
+    public static function mailAchat($login){
+        $u= ModelUtilisateur::select($login);
+        $mail= $u->get("email");
+        $texte= " Votre commande a bien été reçue par nos services et sera envoyée sous peu !
+        Merci d'avoir fait confiance à Des boules pour tous ! ";
+        mail($mail,"Confirmation d'achats !" , $texte);
     }
 
     public static function connect(){
@@ -233,7 +253,7 @@ class ControllerUtilisateur{
         session_unset();
         session_destroy();  
         setcookie(session_name(),"", time()-1,"/" );
-        self::readAll();
+        ControllerBouleDeNoel::readAll();
     }
 
     public static function addPanier(){
@@ -241,16 +261,17 @@ class ControllerUtilisateur{
         $tab_b = ModelBouleDeNoel::selectAll();
         $controller = 'Utilisateur';
         $view='addpanier';
-        $pagetitle='ajout au Panier';
+        $pagetitle='Ajout au Panier';
         require(File::build_path(Array("view","view.php")));
     }
 
-    public static function afficher(){
+    public static function afficherPanier(){
         $controller = 'Utilisateur';
         $view='panier';
         $pagetitle='affichage du Panier';
         require(File::build_path(Array("view","view.php")));
     }
+
     public static function viderPanier(){
         $_SESSION['panier']=null;
         $controller = 'Utilisateur';
@@ -258,5 +279,4 @@ class ControllerUtilisateur{
         $pagetitle='Panier vidé';
         require(File::build_path(Array("view","view.php")));
     }
-
 }

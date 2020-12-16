@@ -9,13 +9,16 @@ $f_htmlPays = htmlspecialchars($f->get('pays'));
 echo <<< EOT
     <p>
         Fournisseur {$f_htmlIdFournisseur}. Son nom est {$f_htmlNom}, il a pour adresse mail : {$f_htmlAdresseMail}. Il se situe au {$f_htmlAdresse}, {$f_htmlPays}. 
-        <a href="./index.php?controller=Fournisseur&action=delete&idFournisseur={$f_raw}">
-            <button>Supprimer ce fournisseur</button>
-        </a>
-        <br>
-        <a href="./index.php?controller=Fournisseur&action=update&idFournisseur={$f_raw}">
-            <button>Mettre à jour le fournisseur</button>
-        </a>
+        <p>
+            <a href="./index.php?controller=Fournisseur&action=delete&idFournisseur={$f_raw}">
+                <button>Supprimer ce fournisseur</button>
+            </a>
+        </p>
+        <p>
+            <a href="./index.php?controller=Fournisseur&action=update&idFournisseur={$f_raw}">
+                <button>Mettre à jour le fournisseur</button>
+            </a>
+        </p>
     </p>
 EOT;
 

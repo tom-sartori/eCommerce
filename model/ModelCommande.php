@@ -42,7 +42,6 @@ class ModelCommande extends Model {
                 }
             }
             $panier=array_count_values($_SESSION['panier']);
-            var_dump($panier);
             foreach ( $panier as $key=>$value){
                 $sql = "INSERT INTO p_Commande(idCommande,idBouleDeNoel,login,dateAchat,quantite) values (:idCommande,:idboule,:idClient,:dateAchat,:quantite)";
                 $req_prep = Model::$pdo->prepare($sql);

@@ -6,15 +6,39 @@
             $b = ModelBouleDeNoel::select($key);
             $somme = $somme + ($value * htmlspecialchars($b->get('prix')));
             echo <<< EOT
-        Vous avez {$value} boules de noël d'identifiant <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$key}">
-                {$key}
-            </a> à votre panier. Cliquer dessus pour avoir plus de détails. <br>
+                <p>
+                    Vous avez {$value} boules de noël d'identifiant 
+                    <a href="./index.php?controller=BouleDeNoel&action=read&idBouleDeNoel={$key}">
+                        {$key}
+                    </a> 
+                    dans votre panier. Cliquez dessus pour avoir plus de détails.
+                </p>        
 EOT;
         }
-        echo 'le prix total du panier est ' . $somme;
-        echo '<br> <a href="./index.php?controller=Utilisateur&action=viderPanier"><button>Vider le panier</button></a>';
-        echo '<br> <a href="./index.php?controller=Commande&action=passerCommande"><button>Acheter les articles</button></a>';
+        echo <<< EOT
+            <p>
+                Le prix total du panier est ' . {$somme} €. 
+            </p>
+            <p>
+                <a href="./index.php?controller=Utilisateur&action=viderPanier">
+                    <button>Vider le panier</button>
+                </a> 
+                <a href="./index.php?controller=Commande&action=passerCommande">
+                    <button>Acheter les articles</button>
+                </a>
+            </p>
+EOT;
     } else
-        echo 'Votre panier est vide veuillez faire des achats';
-echo '<br> <a href="./index.php?controller=Commande&action=historiqueCommande"><button>Historique de commande</button></a>';
+        echo '
+            <p> 
+                Votre panier est vide. Veuillez acheter un maximum de boules pour passer un joyeux Noël ! 
+            </p>';
+
+    if (isset($_SESSION['login']))
+        echo '
+            <p> 
+                <a href="./index.php?controller=Commande&action=historiqueCommande">
+                    <button>Historique de commande</button>
+                </a>
+            </p>';
 ?>
