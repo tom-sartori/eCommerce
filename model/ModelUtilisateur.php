@@ -69,29 +69,6 @@ class ModelUtilisateur extends Model{
         }
     }
 
-    public static function valideCommande($login){
-        try {
-            $dateJour=date("j, n, Y");
-            foreach ($_SESSION['panier'] as $key=>$value){
-                $sql = "INSERT INTO p_Commande value (=:idboule,=:idClient,=:dateAchat)";
-                $req_prep = Model::$pdo->prepare($sql);
-                $values = array(
-                    "idboule" => $value,
-                    "idClient" => $login,
-                    "dateAchat" => $dateJour,
-                );
-                $req_prep->execute($values);
-            }
-        } catch(PDOException $e){
-            if(Conf::getDebug()){
-                echo $e->getMessage();
-            }
-            else{
-                echo "Une erreur est survenue";
-            }
-            die();
-        }
-    }
   public static function is_admin($login){
         try{
           $prep=Model::$pdo->prepare("SELECT admin FROM p_Utilisateur WHERE login='$login'" );

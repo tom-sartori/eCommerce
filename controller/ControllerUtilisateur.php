@@ -259,16 +259,4 @@ class ControllerUtilisateur{
         require(File::build_path(Array("view","view.php")));
     }
 
-    public static function acheterPanier(){
-        if(isset($_SESSION['$login'])){
-            ModelUtilisateur::valideCommande($_SESSION['$login']);
-            $controller = 'Utilisateur';
-            $view='panierAchete';
-            $pagetitle='Panier acheté';
-            require(File::build_path(Array("view","view.php")));
-        }else{
-            self::connect();
-        }
-    }
-
 }
