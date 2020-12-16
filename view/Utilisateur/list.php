@@ -16,7 +16,7 @@
                         {$u_html}
                     </a>
                 
-        EOT;
+EOT;
                 if ($is_user || $is_admin) {
                     echo '
                         <a href="./index.php?controller=Utilisateur&action=delete&login=' . $u_raw . '">
