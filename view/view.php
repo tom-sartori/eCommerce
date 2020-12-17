@@ -57,7 +57,7 @@
         <footer>
             <div>
                 <?php
-                    if((isset($_GET['action'])) && $_GET['action']!='afficherPanier'){
+                    if(!(isset($_GET['action'])) || $_GET['action']!='afficherPanier'){
                         echo '
                             <a href="./index.php?controller=Utilisateur&action=afficherPanier">
                                 <button> <img src="images/panier.png" alt="panier" width="82" height="54"></button>
