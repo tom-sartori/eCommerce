@@ -71,20 +71,16 @@ class ControllerUtilisateur{
     }
 
     public static function create(){
-        if (Session::is_admin()) {
-            $view = 'update';
-            $login = "";
-            $nom = "";
-            $prenom = "";
-            $adresse = "";
-            $adresseMail = "";
-            $pays = "";
-            $mdp = "";
-            $pagetitle = 'Formulaire de création d\'un utilisateur';
-            require(File::build_path(array("view", "view.php")));
-        }
-        else
-            self::error();
+          $view = 'update';
+          $login = "";
+          $nom = "";
+          $prenom = "";
+          $adresse = "";
+          $adresseMail = "";
+          $pays = "";
+          $mdp = "";
+          $pagetitle = 'Formulaire de création d\'un utilisateur';
+          require(File::build_path(array("view", "view.php")));
     }
 
     public static function update(){
