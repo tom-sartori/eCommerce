@@ -94,7 +94,7 @@ class ControllerFournisseur{
 
         public static function created(){
             if (Session::is_admin()) {
-                $data = array('nom' => $_POST["nom"], 'adresse' => $_POST["adresse"], 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"], 'idFournisseur' => $_POST["idFournisseur"]);
+                $data = array('nom' => $_POST["nom"], 'adresse' => $_POST["adresse"], 'adresseMail' => $_POST["adresseMail"], 'pays' => $_POST["pays"]);
                 if (ModelFournisseur::save($data) == 0)
                     self::error();
                 else {
