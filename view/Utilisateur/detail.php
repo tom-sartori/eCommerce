@@ -34,7 +34,7 @@ EOT;
         </p>
         <p>
             <a href="./index.php?controller=Utilisateur&action=update&login={$u_raw}">
-                <button>Mettre à jour l\'utilisateur</button>
+                <button>Mettre à jour l'utilisateur</button>
             </a>
         </p>
 EOT;
